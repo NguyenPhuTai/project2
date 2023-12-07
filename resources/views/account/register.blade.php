@@ -180,21 +180,18 @@
 							<h1>
 								Đăng ký tài khoản
 							</h1>
-							<form method="post" action="" id="customer_register" accept-charset="UTF-8"><input name="FormType" type="hidden" value="customer_register"/><input name="utf8" type="hidden" value="true"/><input type="hidden" id="Token-ca7ba714afe448a8a9204f872ef75da8" name="Token" /><script src="https://www.google.com/recaptcha/api.js?render=6Ldtu4IUAAAAAMQzG1gCw3wFlx_GytlZyLrXcsuK"></script><script>grecaptcha.ready(function() {grecaptcha.execute("6Ldtu4IUAAAAAMQzG1gCw3wFlx_GytlZyLrXcsuK", {action: "customer_register"}).then(function(token) {document.getElementById("Token-ca7ba714afe448a8a9204f872ef75da8").value = token});});</script>
+							<form method="post" action=""  accept-charset="UTF-8">
+							@csrf
 							<p class="error">
 								
 							</p>
 							<fieldset class="form-group">
-								<label>Họ <span class="required">*</span></label>
-								<input type="text" class="form-control form-control-lg" value="" name="lastName" id="lastName"  placeholder="Họ" required >
-							</fieldset>
-							<fieldset class="form-group">
-								<label>Tên <span class="required">*</span></label>
-								<input type="text" class="form-control form-control-lg" value="" name="firstName" id="firstName"  placeholder="Tên" required >
+								<label>Họ và tên <span class="required">*</span></label>
+								<input type="text" class="form-control form-control-lg" value="" name="name" id="name"  placeholder="Họ và tên" required >
 							</fieldset>
 							<fieldset class="form-group">	
 								<label>Số điện thoại <span class="required">*</span></label>
-								<input placeholder="Số điện thoại" type="text" pattern="\d+" id="Phone" class="form-control form-control-comment form-control-lg" name="Phone" Required>
+								<input placeholder="Số điện thoại" type="text" pattern="\d+" id="Phone" class="form-control form-control-comment form-control-lg" name="phone" Required>
 							</fieldset>
 							<fieldset class="form-group">
 								<label>Email <span class="required">*</span></label>
@@ -204,7 +201,11 @@
 								<label>Mật khẩu <span class="required">*</span> </label>
 								<input type="password" class="form-control form-control-lg" value="" name="password" id="password" placeholder="Mật khẩu" required >
 							</fieldset>
-							<button class="btn-login"  type="submit" value="Đăng ký">Đăng ký</button>
+							<fieldset class="form-group">
+								<label>Nhập lại mật khẩu <span class="required">*</span> </label>
+								<input type="password" class="form-control form-control-lg" value="" name="confirm_password" id="password" placeholder="Nhập lại mật khẩu" required >
+							</fieldset>
+							<button class="btn-login"  type="submit">Đăng ký</button>
 							</form>
 							<div class="block social-login--facebooks">
 								<p class="a-center">
@@ -234,93 +235,7 @@
 	</div>	
 </div>
 		</div>
-		<script>
-
-	$(document).ready(function(){
-
-		var preLoadLoadGif = $('<div class="spinner-border text-primary" role="status"><span class="sr-only">Loading...</span></div>');
-		var searchID = -1;
-		var currReqObj = null;
-
-		var $resultsBox = $('<div class="results-box"><div class="search-results"></div><div class="history"></div></div>').appendTo('.theme-search, .theme-searchs');
-
-		$('.theme-search-smart .theme-header-search-form input[type="text"]').bind('keyup change', function(e){
-			//$('.results-box .search-results').html('');
-			if($(this).val().length > 0 && $(this).val() != $(this).data('oldval')) {
-				$(this).data('oldval', $(this).val());
-				if(currReqObj != null) currReqObj.abort();
-				clearTimeout(searchID);
-				var $form = $(this).closest('form');
-				var term = $form.find('input[name="query"]').val();
-				var linkURL = $form.attr('action') + '?query=' + term;
-				$resultsBox.find('.search-results').html('<div class="theme-loading"><div class="spinner-border text-primary" role="status"><span class="sr-only">Loading...</span></div></div>');
-
-				searchID = setTimeout(function(){
-					currReqObj = $.ajax({
-						url: $form.attr('action'),
-						async: false,
-						data: {
-							type: 'product',
-							view: 'json',
-							q: term
-						},
-						dataType: 'json',
-						success: function(data){
-							currReqObj = null;
-
-							if(data.results_total == 0) {
-								$resultsBox.find('.search-results').html('<div class="note">Không có kết quả tìm kiếm</div>');
-							} else {
-								$resultsBox.find('.search-results').empty();
-								$.each(data.results, function(index, item){
-									var xshow = 'wholesale';
-									if(!(item.title.toLowerCase().indexOf(xshow) > -1)) {
-										var $row = $('<a class="clearfix"></a>').attr('href', item.url).attr('title', item.title);
-										$row.append('<div class="img"><img src="' + item.thumb + '" /></div>');
-										$row.append('<div class="d-title">'+item.title+'</div>');
-										$row.append('<div class="d-title d-price">'+item.price+'</div>');
-										$resultsBox.find('.search-results').append($row);
-									}
-								});
-								var countll = $('.search-results a').length;
-								if(countll < 8) {
-									$resultsBox.find('.search-results').append('<a href="' + linkURL + '" class="note" title="Xem tất cả">Xem tất cả <span class="allcount"></span></a>');
-									$('.allcount').html("("+countll+")");
-								}else {
-									$resultsBox.find('.search-results').append('<a href="' + linkURL + '" class="note" title="Xem nhiều hơn">Xem nhiều hơn</a>');
-								}
-								
-							}
-						}
-					});
-				}, 500);
-			}  else if ($(this).val().length <= 1) {
-				//$resultsBox.find('.search-results').empty();
-			}
-		}).attr('autocomplete', 'off').data('oldval', '').bind('focusin', function(){
-			$resultsBox.fadeIn(200);
-		}).bind('click', function(e){
-			e.stopPropagation();
-		});
-		$('body').bind('click', function(){
-			$resultsBox.hide();
-		});
-		$('.theme-search-form').on('submit', function(e){
-			e.preventDefault();
-			var term = '*' + $(this).find('input[name="query"]').val() + '*';
-			var linkURL = $(this).attr('action') + '?query=' + term ;
-			window.location = linkURL;
-
-		});
-
-	});
-
-
-
-</script>
 		
-		
-
 
 
 
