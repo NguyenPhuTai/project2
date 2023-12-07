@@ -19,7 +19,7 @@ class VerifyAccount extends Mailable
     public $account;
     public function __construct($acc)
     {
-        $this-> account = $acc;
+        $this->account = $acc;
     }
 
     /**
@@ -27,7 +27,7 @@ class VerifyAccount extends Mailable
      *
      * @return $this
      */
-    public function content()
+    public function build()
     {
         return $this->view('view.emails.verify-account');
     }

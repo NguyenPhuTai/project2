@@ -25,7 +25,7 @@ class AccountControler extends Controller
     public function check_register(Request $req){
         $req-> validate([
             'name'=>'required|min:6|max:100',
-            'email'=>'required|email|min:6|max:100|unique:khachhang',
+            'email'=>'required|email|min:6|max:100|unique:khachhangs',
             'phone'=>'required|numeric|digits:10',
             'password'=>'required|min:6|',
             'confirm_password'=>'required|same:password',
