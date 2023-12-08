@@ -13,9 +13,30 @@ class AccountControler extends Controller
     public function login(){
         return view('account.login');
     }
+    public function logout(){
+        auth('cus')->logout();
+        return redirect()->route('home.index')->with('ok','Đăng xuất thành công');
+    }
 
-    public function check_login(){
-        
+    public function check_login(Request $req){
+        $req-> validate([
+            'email'=>'exists:khachhangs',
+            'password'=>'required',
+        ],
+    [
+        'email.required'=>'Họ và tên không được để trống',
+        'name.min'=> 'Họ và tên không được dưới 6 kí tự',
+    ]);
+        $data = $req->only('email','password');
+        $check = auth('cus')->attempt($data);
+        if($check){
+            if(auth('cus')->user()->email_verified_at == ''){
+                auth('cus')->logout();
+                return redirect()->back()->with('no','your account is not verify');
+            }
+            return redirect()->route('home.index')->with('ok','welcome back');
+        }
+        return redirect()->back()->with('no','Your account or password not match');
     }
 
     public function register(){
@@ -42,7 +63,9 @@ class AccountControler extends Controller
         }
         dd('no ok');
     }
-
+    public function profile(){
+        return view('account.profile');
+    }
     public function fogot_password(){
         return view('account.fogot_password');
     }

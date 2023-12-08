@@ -23,6 +23,8 @@ Route::group(['prefix'=>'account'], function () {
     route::get('/login',[AccountControler::class,'login'])->name('account.login');
     route::post('/login',[AccountControler::class,'check_login']);
 
+    route::get('/logout',[AccountControler::class,'logout'])->name('account.logout');
+    
     route::get('/register',[AccountControler::class,'register'])->name('account.register');
     route::post('/register',[AccountControler::class,'check_register']);
 

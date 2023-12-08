@@ -40,6 +40,10 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'cus' => [
+            'driver' => 'session',
+            'provider' => 'khachhangs',
+        ],
     ],
 
     /*
@@ -65,10 +69,10 @@ return [
             'model' => App\Models\User::class,
         ],
 
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+        'khachhangs' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\khachhang::class,
+        ],
     ],
 
     /*

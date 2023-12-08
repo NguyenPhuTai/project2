@@ -37,7 +37,7 @@
 
 <link rel="preload" as='style' type="text/css" href="https://bizweb.dktcdn.net/100/429/689/themes/869367/assets/index.scss.css?1697597694844">
 <link href="https://bizweb.dktcdn.net/100/429/689/themes/869367/assets/index.scss.css?1697597694844" rel="stylesheet" type="text/css" media="all" />
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-toast-plugin/1.3.2/jquery.toast.min.css" integrity="sha512-wJgJNTBBkLit7ymC6vvzM1EcSWeM9mmOu+1USHaRBbHkm6W9EgM0HY27+UtUaprntaYQJF75rc8gjxllKs5OIQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 
 
@@ -174,8 +174,12 @@
 				<div class="contact-phone account-header not" >
 					
 					<p>Xin chào!</p>
-					<a href="{{ route('account.login') }}">Đăng nhập</a> 
-					
+					@if(auth('cus')->check())
+						<a href="{{ route('account.profile') }}">{{auth('cus')->user()->name}}</a> <br>
+					@else
+						<a href="{{ route('account.login') }}">Đăng nhập</a>
+					@endif
+
 				</div>
 			</div>
 			<div class="col-lg-2 col-md-3 col-6 col-account order-2 order-md-3">
@@ -836,6 +840,30 @@
 		</div>
 	</div>
 </div>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-toast-plugin/1.3.2/jquery.toast.min.js"></script>
+@if(Session::has('ok'))
+	<script>
+		$.toast({
+		heading: 'Success',
+		text: '{{Session::get('ok') }}',
+		showHideTransition: 'slide',
+		icon: 'success',
+		position:'top-center',
+		
+	})
+	</script>
+@endif
+@if(Session::has('no'))
+	<script>
+		$.toast({
+		heading: 'Error',
+		text: '{{Session::get('no') }}',
+		showHideTransition: 'slide',
+		icon: 'error',
+		position:'top-center',
+		
+	})
+	</script>
+@endif
 
 @yield('main')
