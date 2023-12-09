@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Mail\VerifyAccount;
+use App\Models\diachi;
 use App\Models\khachhang;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Mail;
 
 class AccountControler extends Controller
@@ -64,7 +66,28 @@ class AccountControler extends Controller
         dd('no ok');
     }
     public function profile(){
-        return view('account.profile');
+        if(auth('cus')->check()){
+            return view('account.profile');
+        }
+        return redirect()->route('account.login');
+    }
+    public function address(){
+        $id=auth('cus')->user()->id;
+        $data =diachi::all()->where('id_khachhang',$id);
+            return view('account.address',compact('data'));
+        
+    }
+    public function charge_password(){
+        return view('account.charge_password');
+    }
+    public function check_charge_password(\Request $req){
+        $req->validate([
+            'OldPassword'=> ['required',function($attr, $value, $fail){
+                global $auth;
+                if(Hash::check($value,$auth-> password));
+            }],
+        ]);
+
     }
     public function fogot_password(){
         return view('account.fogot_password');
