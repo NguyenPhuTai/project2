@@ -17,6 +17,8 @@ class khachhang extends Authenticatable
      *
      * @var array<int, string>
      */
+
+    protected $table = 'khachhang'; 
     protected $fillable = [
         'name',
         'email',
