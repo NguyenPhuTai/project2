@@ -44,6 +44,27 @@ return [
             'driver' => 'session',
             'provider' => 'khachhangs',
         ],
+        'adm' => [
+            'driver' => 'session',
+            'provider' => 'khachhang',
+        ],
+        'loyal_customer' => [
+            'driver' => 'session',
+            'provider' => 'loyal_customers',
+        ],
+        'loyal_customer-api' => [
+            'driver' => 'token',
+            'provider' => 'loyal_customers',
+        ],
+
+        'admin' => [
+            'driver' => 'session',
+            'provider' => 'admins',
+        ],
+        'admin-api' => [
+            'driver' => 'token',
+            'provider' => 'admins',
+        ],
     ],
 
     /*
@@ -73,6 +94,19 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\khachhang::class,
         ],
+        'khachhang' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\khachhang::class,
+        ],
+        'loyal_customers' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\LoyalCustomer::class,
+        ],
+
+        'admins' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Admin::class,
+        ],
     ],
 
     /*
@@ -96,6 +130,16 @@ return [
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,
+        ],
+        'loyal_customers' => [
+            'provider' => 'loyal_customers',
+            'table' => 'password_resets',
+            'expire' => 60,
+        ],
+        'admins' => [
+            'provider' => 'admins',
+            'table' => 'password_resets',
+            'expire' => 60,
         ],
     ],
 

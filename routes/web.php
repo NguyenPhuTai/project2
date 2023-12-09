@@ -3,6 +3,7 @@
 use App\Http\Controllers\AccountControler;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -46,8 +47,17 @@ Route::group(['prefix'=>'account'], function () {
 Route::get('/admin/login',[AdminController::class,'login'])->name('admin.login');
 Route::post('/admin/login',[AdminController::class,'check_login']);
 
-Route::prefix('admin')->name('admin.')->middleware('auth')->group(function(){
-    Route::get('',[AdminController::class,'index'])->name('index');
+Route::prefix('admin')->name('admin.')->group(function(){
+    Route::get('/',[AdminController::class,'index'])->name('index');
     Route::get('/logout',[AdminController::class,'logout'])->name('admin.logout');
 });
 
+//route::get('/taotest', [UserController::class,'getLogin']);
+//route::post('/taotest', [UserController::class,'postLogin']);
+
+
+
+
+// Auth::routes();
+
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
