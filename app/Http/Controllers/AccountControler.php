@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ForgotPassword;
 use App\Mail\VerifyAccount;
 use App\Models\diachi;
 use App\Models\khachhang;
@@ -80,20 +81,35 @@ class AccountControler extends Controller
     public function charge_password(){
         return view('account.charge_password');
     }
-    public function check_charge_password(\Request $req){
-        $req->validate([
+    public function check_charge_password(Request $req){
+        $auth= auth('cus')->user()->password;
+        $auth2= auth('cus')->user();
+        $req-> validate([
             'OldPassword'=> ['required',function($attr, $value, $fail){
                 global $auth;
-                if(Hash::check($value,$auth-> password));
+                if(Hash::check($value,$auth)){
+                    $fail ('Your password is not match');
+                }
             }],
+            'Password'=>'required|min:6',
+            'ConfirmPassword'=> 'required|same:Password',
         ]);
+        $data['password'] = bcrypt($req->Password);
+        if($auth2->update($data)){
+            return redirect()->route('home.index')->with('ok','Đổi mật khẩu thành công');
+        };
+        return redirect()->route('account.charge_password')->with('no','Đổi mật không khẩu thành công');
 
     }
-    public function fogot_password(){
-        return view('account.fogot_password');
+    public function forgot_password(){
+        return view('account.forgot_password');
     }
 
-    public function check_fogot_password(){
-        
+    public function check_forgot_password(Request $req){
+        $req -> validate([
+            'email'=> 'required|exists:khachhangs'
+        ]);
+        $cus = khachhang::where('email',$req->email);
+        Mail::to($cus-> email)->send(new ForgotPassword($cus));
     }
 }

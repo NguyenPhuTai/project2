@@ -1,6 +1,5 @@
 @extends('layouts.master')
 @section('main')
-@if(auth('cus')->check())		
 <!DOCTYPE html>
 <html lang="vi">
 	<head>
@@ -20,7 +19,7 @@
 		<meta name="robots" content="noodp,index,follow" />
 		<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">	
 <meta name="description" content="">
-		<title>Trang thông tin khách hàng		</title>
+		<title>Đăng nhập tài khoản		</title>
 		<meta name="keywords" content="Đăng nhập tài khoản, pocomart, pocomart.mysapo.net"/>		
 		<meta property="og:type" content="website">
 <meta property="og:title" content="Đăng nhập tài khoản">
@@ -164,11 +163,8 @@
 				});
 			} window.awe_lazyloadImage=awe_lazyloadImage;
 		</script>
-
-
-
-		<div class="main-index">
-			<section class="bread-crumb">
+<div class="main-index">
+<section class="bread-crumb">
 	<div class="container">
 		<div class="row">
 			<div class="col-12 a-left">
@@ -178,75 +174,58 @@
 						<span class="mr_lr">&nbsp;/&nbsp;</span>
 					</li>
 					
-					<li><strong ><span>Trang khách hàng</span></strong></li>
+					<li><strong ><span>Đăng nhập tài khoản</span></strong></li>
 					
 				</ul>
 			</div>
 		</div>
 	</div>
 </section> 
-<section class="signup page_customer_account">
-	<div class="container">
+
+<div class="page-content-account">
+<div class="container">
 		<div class="row">
-			
-			<div class="col-xs-12 col-sm-12 col-lg-3 col-left-ac">
-				<div class="block-account">
-					<h5 class="title-account">Trang tài khoản</h5>
-					<p>Xin chào, <span style="color:#eb3e32;">{{auth('cus')->user()->name}}</span>&nbsp;!</p>
-					<ul>
-						<li>
-							<a disabled="disabled" class="title-info active" href="{{ route('account.profile') }}">Thông tin tài khoản</a>
-						</li>
-						<li>
-							<a class="title-info" href="">Đơn hàng của bạn</a>
-						</li>
-						<li>
-							<a class="title-info" href="{{ route('account.charge_password') }}">Đổi mật khẩu</a>
-						</li>
-						<li>
-							<a class="title-info" href="{{ route('account.address') }}">Sổ địa chỉ (0)</a>
-						</li>
-						<li>
-                            <a href="{{ route('account.logout') }}" >Đăng xuất</a>
-						</li>
-					</ul>
-				</div>
-			</div>
-			<div class="col-xs-12 col-sm-12 col-lg-9 col-right-ac">
-				<h1 class="title-head margin-top-0">Đổi mật khẩu</h1>
-				<div class="row">
-					<div class="col-md-6 col-12">
-						<div class="page-login">
-							<form method="post" action=""  accept-charset="UTF-8">
-								@csrf
+			<div class="col-lg-10 offset-lg-1 col-xl-8 offset-xl-2">
+				<div class="d-group">
+					<div class="left-col">
+						<div class="group-login group-log">
+						</div>
+						<div class="group-login group-recover ">
+							<h2>
+								Quên mật khẩu
+							</h2>
+							<p class="description">
+								Chúng tôi sẽ gửi cho bạn một email để kích hoạt việc đặt lại mật khẩu.
+							</p>
+							<form method="post" action="{{ route('account.forgot_password') }}" id="recover_customer_password" accept-charset="UTF-8">
+							@csrf
+							<p class="error">
+								
+							</p>
 							
-							
-								<p>Để đảm bảo tính bảo mật bạn vui lòng đặt lại mật khẩu với ít nhất 8 kí tự</p>
-							
-							
-							<div class="form-signup clearfix row">
-								<fieldset class="form-group col-12">
-									<label for="oldPass">Mật khẩu cũ <span class="error">*</span></label>
-									<input type="password" name="OldPassword" id="OldPass" required class="form-control form-control-lg">
-								</fieldset>
-								<fieldset class="form-group col-12">
-									<label for="changePass">Mật khẩu mới <span class="error">*</span></label>
-									<input type="password" name="Password" id="changePass" required class="form-control form-control-lg">
-								</fieldset>
-								<fieldset class="form-group col-12">
-									<label for="confirmPass">Xác nhận lại mật khẩu <span class="error">*</span></label>
-									<input type="password" name="ConfirmPassword" id="confirmPass" required class="form-control form-control-lg">
-								</fieldset>
-							</div>
-							<button class="button-default" type="submit" onclick="window.location.reload()"><i class="hoverButton"></i>Đặt lại mật khẩu</button>
+							<fieldset class="form-group">
+								<input type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,63}$" class="form-control form-control-lg" value="" name="email" id="recover-email" placeholder="Email" Required>
+							</fieldset>
+							<input class="btn-login" type="submit" value="Gửi yêu cầu" />
+							<a href="{{ route('account.login') }}" class="btn-ref">Hủy</a>
 							</form>
 						</div>
+					</div>
+					<div class="right-col">
+						<h4>
+							Quyền lợi với thành viên
+						</h4>
+						<div>
+							<p>Vận chuyển siêu tốc</p>							<p>Sản phẩm đa dạng				</p>							<p>Đổi trả dễ dàng</p>
+<p>Tích điểm đổi quà</p>						<p>Được giảm giá cho lần mua tiếp theo lên đến 10%						</p>
+							
+						</div>
+						<a href="{{ route('account.register') }}" class="btn-register-default">Đăng ký</a>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-</section>
+	</div>	
 </div>
 
 
@@ -301,8 +280,5 @@
 
 	</body>
 </html>
-@else
-    return redirect()->route('account.login');
 
-@endif
 @stop()

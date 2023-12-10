@@ -216,27 +216,8 @@
 								<a href="javascript:void(0)" class="social-login--google" onclick="loginGoogle()"><img width="129px" height="37px" alt="google-login-button" src="//bizweb.dktcdn.net/assets/admin/images/login/gp-btn.svg"></a>
 							</div>
 							<p>
-								Bạn quên mật khẩu bấm <a href="" onclick="showRecoverPasswordForm();return false;">vào đây</a>
+								Bạn quên mật khẩu bấm <a href="{{ route('account.forgot_password') }}" >vào đây</a>
 							</p>
-						</div>
-						<div class="group-login group-recover d-none">
-							<h2>
-								Quên mật khẩu
-							</h2>
-							<p class="description">
-								Chúng tôi sẽ gửi cho bạn một email để kích hoạt việc đặt lại mật khẩu.
-							</p>
-							<form method="post" action="/account/recover" id="recover_customer_password" accept-charset="UTF-8"><input name="FormType" type="hidden" value="recover_customer_password"/><input name="utf8" type="hidden" value="true"/>
-							<p class="error">
-								
-							</p>
-							
-							<fieldset class="form-group">
-								<input type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,63}$" class="form-control form-control-lg" value="" name="Email" id="recover-email" placeholder="Email" Required>
-							</fieldset>
-							<input class="btn-login" type="submit" value="Gửi yêu cầu" />
-							<a href="#" class="btn-ref" onclick="hideRecoverPasswordForm();return false;">Hủy</a>
-							</form>
 						</div>
 					</div>
 					<div class="right-col">

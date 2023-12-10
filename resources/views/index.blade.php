@@ -18,7 +18,7 @@
 		<link rel="dns-prefetch" href="http://www.google-analytics.com/">
 		<link rel="dns-prefetch" href="http://www.googletagmanager.com/">
 
-		<link rel="icon" href="../bizweb.dktcdn.net/100/429/689/themes/869367/assets/favicon2c6f.png?1697597694844" type="image/x-icon" /><link rel="apple-touch-icon" href="../bizweb.dktcdn.net/100/429/689/themes/869367/assets/favicon2c6f.png?1697597694844">
+		<link rel="icon" href="https://bizweb.dktcdn.net/100/429/689/themes/869367/assets/favicon2c6f.png?1697597694844" type="image/x-icon" /><link rel="apple-touch-icon" href="https://bizweb.dktcdn.net/100/429/689/themes/869367/assets/favicon2c6f.png?1697597694844">
 		<meta name="robots" content="noodp,index,follow" />
 		<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">	
 <meta name="description" content="Giao diện siêu thị điện máy tuyệt đẹp tối ưu SEO hiệu quả cho chủ cửa hàng POCO Mart">
@@ -27,21 +27,21 @@
 		<meta property="og:type" content="website">
 <meta property="og:title" content="POCO Mart | Thiên đường mua sắn cho mọi nhà">
 <meta property="og:image:alt" content="POCO Mart | Thiên đường mua sắn cho mọi nhà">
-<meta property="og:image" content="../bizweb.dktcdn.net/100/429/689/themes/869367/assets/logo2c6f.png?1697597694844">
-<meta property="og:image:secure_url" content="../bizweb.dktcdn.net/100/429/689/themes/869367/assets/logo2c6f.png?1697597694844">
+<meta property="og:image" content="https://bizweb.dktcdn.net/100/429/689/themes/869367/assets/logo2c6f.png?1697597694844">
+<meta property="og:image:secure_url" content="https://bizweb.dktcdn.net/100/429/689/themes/869367/assets/logo2c6f.png?1697597694844">
 <meta property="og:description" content="Giao diện siêu thị điện máy tuyệt đẹp tối ưu SEO hiệu quả cho chủ cửa hàng POCO Mart">
 <meta property="og:url" content="index.html">
-<meta property="og:site_name" content="pocomart">		<link rel="preload" as='style'  type="text/css" href="../bizweb.dktcdn.net/100/429/689/themes/869367/assets/plugincss2c6f.css?1697597694844">
-		<link href="../bizweb.dktcdn.net/100/429/689/themes/869367/assets/plugincss2c6f.css?1697597694844" rel="stylesheet" type="text/css" media="all" />
-<link rel="preload" as='style' href="../bizweb.dktcdn.net/100/429/689/themes/869367/assets/main.scss2c6f.css?1697597694844">
-<link rel="preload" as='style' href="../bizweb.dktcdn.net/100/429/689/themes/869367/assets/header.scss2c6f.css?1697597694844">
+<meta property="og:site_name" content="pocomart">		<link rel="preload" as='style'  type="text/css" href="https://bizweb.dktcdn.net/100/429/689/themes/869367/assets/plugincss2c6f.css?1697597694844">
+		<link href="https://bizweb.dktcdn.net/100/429/689/themes/869367/assets/plugincss2c6f.css?1697597694844" rel="stylesheet" type="text/css" media="all" />
+<link rel="preload" as='style' href="https://bizweb.dktcdn.net/100/429/689/themes/869367/assets/main.scss2c6f.css?1697597694844">
+<link rel="preload" as='style' href="https://bizweb.dktcdn.net/100/429/689/themes/869367/assets/header.scss2c6f.css?1697597694844">
 
-<link href="../bizweb.dktcdn.net/100/429/689/themes/869367/assets/main.scss2c6f.css?1697597694844" rel="stylesheet" type="text/css" media="all" />
-<link href="../bizweb.dktcdn.net/100/429/689/themes/869367/assets/header.scss2c6f.css?1697597694844" rel="stylesheet" type="text/css" media="all" />
+<link href="https://bizweb.dktcdn.net/100/429/689/themes/869367/assets/main.scss2c6f.css?1697597694844" rel="stylesheet" type="text/css" media="all" />
+<link href="https://bizweb.dktcdn.net/100/429/689/themes/869367/assets/header.scss2c6f.css?1697597694844" rel="stylesheet" type="text/css" media="all" />
 
 
-<link rel="preload" as='style' type="text/css" href="../bizweb.dktcdn.net/100/429/689/themes/869367/assets/index.scss2c6f.css?1697597694844">
-<link href="../bizweb.dktcdn.net/100/429/689/themes/869367/assets/index.scss2c6f.css?1697597694844" rel="stylesheet" type="text/css" media="all" />
+<link rel="preload" as='style' type="text/css" href="https://bizweb.dktcdn.net/100/429/689/themes/869367/assets/index.scss2c6f.css?1697597694844">
+<link href="https://bizweb.dktcdn.net/100/429/689/themes/869367/assets/index.scss2c6f.css?1697597694844" rel="stylesheet" type="text/css" media="all" />
 
 
 
@@ -120,10 +120,10 @@
 		
 	</head>
 	<body>  
-		<script src="../bizweb.dktcdn.net/100/429/689/themes/869367/assets/jquery2c6f.js?1697597694844" type="text/javascript"></script>
-		<script rel="preload" src="../bizweb.dktcdn.net/100/429/689/themes/869367/assets/ajaxsubmit2c6f.js?1697597694844" type="text/javascript"></script>
-		<script rel="preload" src="../bizweb.dktcdn.net/100/429/689/themes/869367/assets/notify2c6f.js?1697597694844" type="text/javascript"></script>
-		<script src="../bizweb.dktcdn.net/100/429/689/themes/869367/assets/swiper2c6f.js?1697597694844" type="text/javascript"></script>
+		<script src="https://bizweb.dktcdn.net/100/429/689/themes/869367/assets/jquery2c6f.js?1697597694844" type="text/javascript"></script>
+		<script rel="preload" src="https://bizweb.dktcdn.net/100/429/689/themes/869367/assets/ajaxsubmit2c6f.js?1697597694844" type="text/javascript"></script>
+		<script rel="preload" src="https://bizweb.dktcdn.net/100/429/689/themes/869367/assets/notify2c6f.js?1697597694844" type="text/javascript"></script>
+		<script src="https://bizweb.dktcdn.net/100/429/689/themes/869367/assets/swiper2c6f.js?1697597694844" type="text/javascript"></script>
 		<script>
 			$(document).ready(function ($) {
 				awe_lazyloadImage();
@@ -153,18 +153,18 @@
 							<picture>
 								<source 
 										media="(min-width: 1200px)"
-										srcset="../bizweb.dktcdn.net/100/429/689/themes/869367/assets/slider_12c6f.jpg?1697597694844">
+										srcset="https://bizweb.dktcdn.net/100/429/689/themes/869367/assets/slider_12c6f.jpg?1697597694844">
 								<source 
 										media="(min-width: 992px)"
-										srcset="../bizweb.dktcdn.net/100/429/689/themes/869367/assets/slider_12c6f.jpg?1697597694844">
+										srcset="https://bizweb.dktcdn.net/100/429/689/themes/869367/assets/slider_12c6f.jpg?1697597694844">
 								<source 
 										media="(min-width: 569px)"
-										srcset="../bizweb.dktcdn.net/100/429/689/themes/869367/assets/slider_12c6f.jpg?1697597694844">
+										srcset="https://bizweb.dktcdn.net/100/429/689/themes/869367/assets/slider_12c6f.jpg?1697597694844">
 								<source 
 										media="(max-width: 480px)" 
-										srcset="../bizweb.dktcdn.net/thumb/grande/100/429/689/themes/869367/assets/slider_12c6f.jpg?1697597694844">
+										srcset="https://bizweb.dktcdn.net/thumb/grande/100/429/689/themes/869367/assets/slider_12c6f.jpg?1697597694844">
 								<img 
-									 src="../bizweb.dktcdn.net/100/429/689/themes/869367/assets/slider_12c6f.jpg?1697597694844"
+									 src="https://bizweb.dktcdn.net/100/429/689/themes/869367/assets/slider_1.jpg?1697597694844"
 									 alt="HOT SALE - Sập Sàn" class="img-responsive center-block" />
 							</picture>
 						</a>
