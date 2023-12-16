@@ -273,7 +273,7 @@
 				
 				<div class="row total_address">
                     @foreach($data as $d)
-					<div id="view_address_25339048" class="customer_address col-xs-12 col-lg-12 col-md-12 col-xl-12">
+					<div id="view_address_{{$d-> id}}" class="customer_address col-xs-12 col-lg-12 col-md-12 col-xl-12">
 						<div class="address_info" style="border-top: 1px #ebebeb solid;padding-top: 16px;margin-top: 20px;">
 							<div class="address-group">
 								<div class="address form-signup">
@@ -283,39 +283,82 @@
 									<p>
 										<strong>Địa chỉ: </strong>
 										
-										bfdsbfsdbsdf,
-										
-										
-										Phường Thanh Khê Đông,
-										
-										
-										Quận Thanh Khê,
-										
-										
-										Đà Nẵng,
-										
-										
-										Vietnam
+										{{$d-> address}}
 										
 									</p>
 									
-									<p><strong>Số điện thoại:</strong> 6453634563</p>
-									
-									
-									<p><strong>Công ty:</strong> fdbfgbfbf</p>
-									
+									<p><strong>Số điện thoại:</strong>{{$d-> phone}}</p>
+							
 								</div>
 							</div>
-							<div id="tool_address_25339048" class="btn-address">
+							<div id="tool_address_{{$d-> id}}" class="btn-address">
 								<p class="btn-row">
-									<button class="btn-edit-addr btn btn-primarys btn-edit" type="button" data-form="edit_address_25339048" aria-controls="edit_address_25339048">
+
+									<button class="btn-edit-addr btn btn-primarys btn-edit" type="button" data-form="edit_address_{{$d-> id}}" aria-controls="edit_address_{{$d-> id}}">
 										Chỉnh sửa địa chỉ
 									</button>
-									<button class="btn btn-dark-address btn-edit-addr btn-delete" type="button" onclick="Bizweb.CustomerAddress.destroy(25339048);return false"><span>Xóa</span></button>
+
+                                    <button class="btn btn-dark-address btn-edit-addr btn-delete" type="button" onclick="Bizweb.CustomerAddress.destroy({{$d-> id}});return false">
+                                        <form action="{{ route('account.delete_address') }}" method="post">
+                                            @method('delete')
+                                            @csrf
+                                            <input type="hidden" name="id" value="{{$d-> id}}">
+                                            <button class="btn btn-dark-address btn-edit-addr btn-delete" type="submit">xóa</button>
+                                            
+                                        </form>
+                                    </button>
 								</p>
 							</div>
 						</div>
+					</div>
+                    <div id="edit_address_{{$d-> id}}" class="form-list modal_address modal modal_edit_address">
+						<div class="btn-close closed_pop"><i class="fa fa-times"></i></div>
+						<h2 class="title_pop">
+							Chỉnh sửa địa chỉ
+						</h2>
+						<form method="post" action="{{ route('account.update_address') }}" accept-charset="UTF-8">
+                            @csrf
+                            <div class="pop_bottom">
+                                <div class="form_address">
+                                    <input type="hidden" name="id" value="{{$d-> id}}">
+                                    <div class="field">
+                                        <fieldset class="form-group">
+                                            <input type="text" name="name" class="form-control" required value="{{$d-> name}}" autocapitalize="words">
+                                            <label>Họ tên</label>
+                                        </fieldset>
+                                        <p class="error-msg"></p>
+                                    </div>
+                                    <div class="field">
+                                        <fieldset class="form-group">
+                                            <input type="number"  pattern="\d+" class="form-control" id="Phone" name="phone" maxlength="10" value="{{$d-> phone}}">
+                                            <label>Số điện thoại</label>
+                                        </fieldset>	
+                                    </div>
+                                    <div class="field">
+                                        <fieldset class="form-group">
+                                            <input type="text" class="form-control" name="address" value="{{$d-> address}}" >
+                                            <label>Địa chỉ</label>
+                                        </fieldset>
+                                    </div>
+
+                                </div>
+                                <div class="checkbox hidden ">
+                                    <label class="c-input c-checkbox" style="padding-left: 20px;">
+                                        <input type="checkbox" name="IsDefault" value="true">
+                                        <span class="c-indicator">Đặt là địa chỉ mặc định?</span> 
+                                    </label>
+                                </div>	
+                                <div class="btn-row">	
+                                    <button class="btn btn-dark-address btn-fix-addr btn-close" type="button" data-form="edit_address_25339046">
+                                        Hủy
+                                    </button>										
+                                    <button class="btn btn-primarys btn-submit" type="submit" ><span>Cập nhật địa chỉ</span></button>																	
+
+                                </div>
+                            </div>
+						</form>
 					</div>	
+                    
                     @endforeach
 			    </div>
 		</div>

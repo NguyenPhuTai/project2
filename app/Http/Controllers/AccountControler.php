@@ -74,9 +74,9 @@ class AccountControler extends Controller
     }
     public function address(){
         $id=auth('cus')->user()->id;
-        $data =diachi::all()->where('id_khachhang',$id);
-            return view('account.address',compact('data'));
-        
+        $data =diachi::all('id','name','id_khachhang','address','phone')->where('id_khachhang',$id);
+        $d = diachi::all('id');
+            return view('account.address',compact('data'));   
     }
     public function charge_password(){
         return view('account.charge_password');

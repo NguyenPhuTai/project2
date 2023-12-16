@@ -35,6 +35,8 @@ Route::group(['prefix'=>'account'], function () {
 
         route::get('/address',[AccountControler::class,'address'])->name('account.address');
         route::post('/address',[DiachiController::class,'check_address']);
+        route::post('/address',[DiachiController::class,'update_address'])->name('account.update_address');
+        route::delete('/address',[DiachiController::class,'delete_address'])->name('account.delete_address');
 
         route::get('/charge-password',[AccountControler::class,'charge_password'])->name('account.charge_password');
         route::post('/charge-password',[AccountControler::class,'check_charge_password']);
