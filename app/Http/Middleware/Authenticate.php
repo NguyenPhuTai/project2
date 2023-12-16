@@ -15,11 +15,13 @@ class Authenticate extends Middleware
     protected function redirectTo($request)
     {
         if (! $request->expectsJson()) {
-<<<<<<< HEAD
+
             return route('admin.login');
-=======
-            return route('diachi.index');
->>>>>>> 67173c5ebf2639df4d81f0bc1747506eef7de52a
+
+            
+
         }
+
+        
     }
 }

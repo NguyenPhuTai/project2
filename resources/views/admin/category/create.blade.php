@@ -1,6 +1,6 @@
 @extends('master.admin')
 <base href="/">
-@section('title','Add new Category')
+@section('title','Thêm mới Danh mục')
 @section('main')
 
 <div class="row">
@@ -9,28 +9,28 @@
         <form action="{{route('category.store')}}" method="POST" role="form">
             @csrf
             <div class="form-group">
-                <label for="">Category name</label>
-                <input type="text" class="form-control" name="name" value="{{old('name')}}" placeholder="Input Category name">
+                <label for="">Tên Danh mục</label>
+                <input type="text" class="form-control" name="name" value="{{old('name')}}" placeholder="Nhập Danh mục">
             </div>
         
             <div class="form-group">
-                <label for="">Status</label>
+                <label for="">Trạng thái</label>
 
                 <div class="radio">
                     <label>
                         <input type="radio" name="status" id="inputstatus" value="1" checked="checked">
-                        Con hoat dong
+                        Còn hàng
                     </label>
                 </div>
                 <div class="radio">
                     <label>
                         <input type="radio" name="status" id="inputstatus" value="0">
-                        Khong hoat dong
+                        Hết hàng
                     </label>
                 </div>
             </div>
         
-            <button type="submit" class="btn btn-primary"><i class="fa fa-save"> Save</i></button>
+            <button type="submit" class="btn btn-primary"><i class="fa fa-save"> Lưu</i></button>
         </form>
         
     </div>

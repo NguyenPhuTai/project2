@@ -44,10 +44,6 @@ return [
             'driver' => 'session',
             'provider' => 'khachhangs',
         ],
-        'adm' => [
-            'driver' => 'session',
-            'provider' => 'khachhang',
-        ],
         'loyal_customer' => [
             'driver' => 'session',
             'provider' => 'loyal_customers',
@@ -91,10 +87,6 @@ return [
         ],
 
         'khachhangs' => [
-            'driver' => 'eloquent',
-            'model' => App\Models\khachhang::class,
-        ],
-        'khachhang' => [
             'driver' => 'eloquent',
             'model' => App\Models\khachhang::class,
         ],

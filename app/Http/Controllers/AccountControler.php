@@ -9,7 +9,7 @@ use App\Models\khachhang;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use Mail;
+use Illuminate\Support\Facades\Mail ;
 
 class AccountControler extends Controller
 {

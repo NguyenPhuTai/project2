@@ -17,7 +17,7 @@
 		<meta name="robots" content="noodp,index,follow" />
 		<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">	
 <meta name="description" content="Giao diện siêu thị điện máy tuyệt đẹp tối ưu SEO hiệu quả cho chủ cửa hàng POCO Mart">
-		<title>POCO Mart | Thiên đường mua sắn cho mọi nhà		</title>
+		<title>POCO Mart HIHI | Thiên đường mua sắn cho mọi nhà		</title>
 		<meta name="keywords" content="Poco theme"/>		
 		<meta property="og:type" content="website">
 <meta property="og:title" content="POCO Mart | Thiên đường mua sắn cho mọi nhà">

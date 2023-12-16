@@ -1,6 +1,6 @@
 @extends('master.admin')
 <base href="/">
-@section('title','Edit Product '. $product->name)
+@section('title','Sửa Sản phẩm: '. $product->name)
 @section('main')
 
 <div class="row">
@@ -8,9 +8,9 @@
         @csrf @method('PUT')
         <div class="col-md-9">
             <div class="form-group">
-                <label for="">Product Category</label>
+                <label for="">Danh mục Sản phẩm</label>
                 <select name="category_id" class="form-control">
-                    <option value="">--Chon 1--</option>
+                    <option value="">--Mời chọn--</option>
                     @foreach($cats as $cat)
                     <option value="{{$cat->id}}" {{ $cat->id==$product->category_id?'selected':''}}>{{$cat->name}}</option>
                     @endforeach
@@ -18,17 +18,17 @@
             </div>
 
             <div class="form-group">
-                <label for="">Product name</label>
-                <input type="text" name="name" class="form-control" value="{{$product->name}}" placeholder="Input Category name">
+                <label for="">Tên Sản phẩm</label>
+                <input type="text" name="name" class="form-control" value="{{$product->name}}" placeholder="Nhập tên Sản phẩm">
             </div>
 
             <div class="form-group">
-                <label for="">Description</label>
-                <textarea name="description" class="form-control description" placeholder="Nhap mo ta ">{{$product->description}}</textarea>
+                <label for="">Mô tả Sản phẩm</label>
+                <textarea name="description" class="form-control description" placeholder="Mô tả Sản phẩm ">{{$product->description}}</textarea>
             </div>
 
             <div class="form-group">
-                <label for="">Other Image</label>
+                <label for="">Chọn nhiều ảnh</label>
                 <input type="file" name="other_img[]" class="form-control" id="" multiple onchange="showOtherImage(this)">
                 <div class="row">
                     @foreach($product->images as $img)
@@ -52,38 +52,38 @@
         </div>
         <div class="col-md-3">
             <div class="form-group">
-                <label for="">Price</label>
-                <input type="text" name="price" class="form-control" value="{{$product->price}}" placeholder="Input Price">
+                <label for="">Giá</label>
+                <input type="text" name="price" class="form-control" value="{{$product->price}}" placeholder="Giá">
             </div>
             <div class="form-group">
-                <label for="">Sale Price</label>
-                <input type="text" name="sale_price" class="form-control" value="{{$product->sale_price}}" placeholder="Input Sale Price">
+                <label for="">Giảm giá</label>
+                <input type="text" name="sale_price" class="form-control" value="{{$product->sale_price}}" placeholder="Giảm giá">
             </div>
 
             <div class="form-group">
-                <label for="">Status</label>
+                <label for="">Trạng thái</label>
 
                 <div class="radio">
                     <label>
                         <input type="radio" name="status" value="1" {{$product->status==1?'checked':''}}>
-                        Con hang
+                        Còn hàng
                     </label>
                 </div>
                 <div class="radio">
                     <label>
                         <input type="radio" name="status" value="0" {{$product->status==0?'checked':''}}>
-                        Het hang
+                        Hết hàng
                     </label>
                 </div>
 
                 <div class="form-group">
-                    <label for="">Image</label>
+                    <label for="">Ảnh đại diện</label>
                     <input type="file" name="img" class="form-control" id="" onchange="showImage(this)">
                     <img src="uploads/product/{{$product->image}}" width="100%">
                     <br><h2>*Ảnh sau chỉnh sửa:</h2>
                     <img src="" alt="" id="show_img">
                 </div>
-                <button type="submit">Save</button>
+                <button type="submit">Lưu</button>
             </div>
 
         </div>

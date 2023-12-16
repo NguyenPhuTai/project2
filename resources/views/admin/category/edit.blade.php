@@ -1,5 +1,5 @@
 @extends('master.admin')
-@section('title','Add new Category: '.$category->name)
+@section('title','Sửa Danh mục: '.$category->name)
 @section('main')
 
 <div class="row">
@@ -8,28 +8,28 @@
         <form action="{{route('category.update',$category->id)}}" method="POST" role="form">
             @csrf @method('PUT')
             <div class="form-group">
-                <label for="">Category name</label>
+                <label for="">Tên Danh mục</label>
                 <input type="text" class="form-control" name="name" value="{{$category->name}}" placeholder="Input Category name">
             </div>
         
             <div class="form-group">
-                <label for="">Status</label>
+                <label for="">Trạng thái</label>
 
                 <div class="radio">
                     <label>
                         <input type="radio" name="status" id="inputstatus" value="1" {{$category->status==1?'checked':''}}>
-                        Con hoat dong
+                        Còn hàng
                     </label>
                 </div>
                 <div class="radio">
                     <label>
                         <input type="radio" name="status" id="inputstatus" value="0" {{$category->status==0?'checked':''}}>
-                        Khong hoat dong
+                        Hết hàng
                     </label>
                 </div>
             </div>
         
-            <button type="submit" class="btn btn-primary"><i class="fa fa-save"> Save</i></button>
+            <button type="submit" class="btn btn-primary"><i class="fa fa-save"> Lưu</i></button>
         </form>
         
     </div>

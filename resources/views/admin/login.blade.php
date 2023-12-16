@@ -29,11 +29,11 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a href="ad_assets/index2.html"><b>Admin</b>LTE</a>
+    <a href="ad_assets/index2.html"><b>Đăng nhập Admin</b></a>
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
-    <p class="login-box-msg">Sign in to start your session</p>
+    <p class="login-box-msg">Mời bạn đăng nhập</p>
 
     <form action="" method="post">
         @csrf
@@ -62,12 +62,12 @@
         <div class="col-xs-8">
           <div class="checkbox ">
             <label>
-              <input type="checkbox"> Remember Me
+              <input type="checkbox"> Ghi nhớ Tài khoản
             </label>
           </div>
         </div>
         <div class="col-xs-4">
-          <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
+          <button type="submit" class="btn btn-primary btn-block btn-flat">Đăng nhập</button>
         </div>
       </div>
     </form>

@@ -68,31 +68,31 @@ use Illuminate\Support\Facades\Auth;
           </li>
           <li class="treeview">
             <a href="#">
-              <i class="fa fa-th"></i> <span>Category</span> <i class="fa fa-angle-left pull-right"></i>
+              <i class="fa fa-th"></i> <span>Danh mục</span> <i class="fa fa-angle-left pull-right"></i>
             </a>
             <ul class="treeview-menu">
-              <li><a href="{{route('category.index')}}"><i class="fa fa-circle-o"></i> List</a></li>
-              <li><a href="{{route('category.create')}}"><i class="fa fa-circle-o"></i> Add new</a></li>
+              <li><a href="{{route('category.index')}}"><i class="fa fa-circle-o"></i> Danh sách Danh mục</a></li>
+              <li><a href="{{route('category.create')}}"><i class="fa fa-circle-o"></i> Thêm mới Danh mục</a></li>
             </ul>
           </li>
 
           <li class="treeview">
             <a href="#">
-              <i class="fa fa-th"></i> <span>Product</span> <i class="fa fa-angle-left pull-right"></i>
+              <i class="fa fa-th"></i> <span>Sản phẩm</span> <i class="fa fa-angle-left pull-right"></i>
             </a>
             <ul class="treeview-menu">
-              <li><a href="{{route('product.index')}}"><i class="fa fa-circle-o"></i> List</a></li>
-              <li><a href="{{route('product.create')}}"><i class="fa fa-circle-o"></i> Add new</a></li>
+              <li><a href="{{route('product.index')}}"><i class="fa fa-circle-o"></i> Danh sách Sản phẩm</a></li>
+              <li><a href="{{route('product.create')}}"><i class="fa fa-circle-o"></i> Thêm mới Sản phẩm</a></li>
             </ul>
           </li>
 
           <li class="treeview">
             <a href="#">
-              <i class="fa fa-shopping-cart"></i> <span>Don hang</span> <i class="fa fa-angle-left pull-right"></i>
+              <i class="fa fa-shopping-cart"></i> <span>Đơn hàng</span> <i class="fa fa-angle-left pull-right"></i>
             </a>
             <ul class="treeview-menu">
-              <li><a href="ad_assets/index.html"><i class="fa fa-circle-o"></i> List</a></li>
-              <li><a href="ad_assets/index2.html"><i class="fa fa-circle-o"></i> Thong ke bao cao</a></li>
+              <li><a href="ad_assets/index.html"><i class="fa fa-circle-o"></i> Danh sách Đơn hàng</a></li>
+              <li><a href="ad_assets/index2.html"><i class="fa fa-circle-o"></i> Thống kê báo cáo Đơn hàng</a></li>
             </ul>
           </li>
 
@@ -124,19 +124,13 @@ use Illuminate\Support\Facades\Auth;
             @yield('main')
           </div>
           <div class="box-footer">
-            Footer
+            
           </div>
         </div>
       </section>
     </div>
 
-    <footer class="main-footer">
-      <div class="pull-right hidden-xs">
-        <b>Version</b> 2.3.3
-      </div>
-      <strong>Copyright &copy; 2014-2015 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights
-      reserved.
-    </footer>
+    
   </div>
   <script src="ad_assets/plugins/jQuery/jQuery-2.2.0.min.js"></script>
   <script src="ad_assets/bootstrap/js/bootstrap.min.js"></script>
