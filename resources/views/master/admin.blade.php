@@ -1,7 +1,12 @@
+<?
+use Illuminate\Support\Facades\Auth;
+?>
+
 <!DOCTYPE html>
 <html>
 
 <head>
+  <base href="/">
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>@yield('title')</title>
@@ -11,6 +16,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
   <link rel="stylesheet" href="ad_assets/dist/css/AdminLTE.min.css">
   <link rel="stylesheet" href="ad_assets/dist/css/skins/_all-skins.min.css">
+  @yield('css')
 </head>
 
 <body class="hold-transition skin-blue sidebar-mini">
@@ -18,8 +24,8 @@
 
     <header class="main-header">
       <a href="ad_assets/index2.html" class="logo">
-        <span class="logo-mini"><b>A</b>LT</span>
-        <span class="logo-lg"><b>Admin</b>LTE</span>
+        <span class="logo-mini"><b></b></span>
+        <span class="logo-lg"><b>Admin</b></span>
       </a>
       <nav class="navbar navbar-static-top">
         <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
@@ -34,7 +40,7 @@
             <li class="dropdown user user-menu">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 <img src="ad_assets/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-                <span class="hidden-xs">{{auth()->khachhangs()->name}}</span>
+                <span class="hidden-xs">{{auth('admin')->user()->email}}</span>
               </a>
             </li>
           </ul>
@@ -48,8 +54,10 @@
             <img src="ad_assets/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
           </div>
           <div class="pull-left info">
-            <p>{{auth()->khachhangs()->name}}</p>
+            <p>{{auth('admin')->user()->email}}</p> 
+            <!-- dang de trong -->
             <a href="{{route('admin.logout')}}"><i class="fa fa-circle text-success"></i> Logout</a>
+            
           </div>
         </div>
         <ul class="sidebar-menu">
@@ -63,8 +71,8 @@
               <i class="fa fa-th"></i> <span>Category</span> <i class="fa fa-angle-left pull-right"></i>
             </a>
             <ul class="treeview-menu">
-              <li><a href="ad_assets/index.html"><i class="fa fa-circle-o"></i> List</a></li>
-              <li><a href="ad_assets/index2.html"><i class="fa fa-circle-o"></i> Add new</a></li>
+              <li><a href="{{route('category.index')}}"><i class="fa fa-circle-o"></i> List</a></li>
+              <li><a href="{{route('category.create')}}"><i class="fa fa-circle-o"></i> Add new</a></li>
             </ul>
           </li>
 
@@ -73,8 +81,8 @@
               <i class="fa fa-th"></i> <span>Product</span> <i class="fa fa-angle-left pull-right"></i>
             </a>
             <ul class="treeview-menu">
-              <li><a href="ad_assets/index.html"><i class="fa fa-circle-o"></i> List</a></li>
-              <li><a href="ad_assets/index2.html"><i class="fa fa-circle-o"></i> Add new</a></li>
+              <li><a href="{{route('product.index')}}"><i class="fa fa-circle-o"></i> List</a></li>
+              <li><a href="{{route('product.create')}}"><i class="fa fa-circle-o"></i> Add new</a></li>
             </ul>
           </li>
 
@@ -136,6 +144,8 @@
   <script src="ad_assets/plugins/fastclick/fastclick.js"></script>
   <script src="ad_assets/dist/js/app.min.js"></script>
   <script src="ad_assets/dist/js/demo.js"></script>
+  @yield('js')
 </body>
 
 </html>
+

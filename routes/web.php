@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\AccountControler;
+use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
@@ -46,10 +48,16 @@ Route::group(['prefix'=>'account'], function () {
 
 Route::get('/admin/login',[AdminController::class,'login'])->name('admin.login');
 Route::post('/admin/login',[AdminController::class,'check_login']);
+Route::get('/logout',[AdminController::class,'logout'])->name('admin.logout');
+Route::resource('category',CategoryController::class);
+Route::resource('product',ProductController::class);
+Route::get('product-delete-image/{image}',[ProductController::class,'destroyImage'])->name('product.destroyImage');
 
-Route::prefix('admin')->name('admin.')->group(function(){
-    Route::get('/',[AdminController::class,'index'])->name('index');
-    Route::get('/logout',[AdminController::class,'logout'])->name('admin.logout');
+Route::prefix('admin')->name('admin.')->middleware(['auth:admin'])->group(function(){
+    Route::get('',[AdminController::class,'index'])->name('index');
+   
+    
+    
 });
 
 //route::get('/taotest', [UserController::class,'getLogin']);
