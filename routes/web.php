@@ -1,11 +1,17 @@
 <?php
 
 use App\Http\Controllers\AccountControler;
+<<<<<<< HEAD
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
+=======
+use App\Http\Controllers\DiachiController;
+use App\Http\Controllers\HomeController;
+use App\Models\diachi;
+>>>>>>> 67173c5ebf2639df4d81f0bc1747506eef7de52a
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,12 +37,18 @@ Route::group(['prefix'=>'account'], function () {
     
     route::get('/register',[AccountControler::class,'register'])->name('account.register');
     route::post('/register',[AccountControler::class,'check_register']);
+    Route::group(['middleware'=> 'customer'], function () {
+        route::get('/profile',[AccountControler::class,'profile'])->name('account.profile');
+        route::post('/profile',[AccountControler::class,'check_profile']);
 
-    route::get('/profile',[AccountControler::class,'profile'])->name('account.profile');
-    route::post('/profile',[AccountControler::class,'check_profile']);
+        route::get('/address',[AccountControler::class,'address'])->name('account.address');
+        route::post('/address',[DiachiController::class,'check_address']);
+        route::post('/address',[DiachiController::class,'update_address'])->name('account.update_address');
+        route::delete('/address',[DiachiController::class,'delete_address'])->name('account.delete_address');
 
-    route::get('/charge-password',[AccountControler::class,'charge_password'])->name('account.charge_password');
-    route::post('/charge-password',[AccountControler::class,'check_charge_password']);
+        route::get('/charge-password',[AccountControler::class,'charge_password'])->name('account.charge_password');
+        route::post('/charge-password',[AccountControler::class,'check_charge_password']);
+    });
 
     route::get('/forgot-password',[AccountControler::class,'forgot_password'])->name('account.forgot_password');
     route::post('/forgot-password',[AccountControler::class,'check_forgot_password']);

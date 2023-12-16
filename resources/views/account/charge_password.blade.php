@@ -213,15 +213,36 @@
 				</div>
 			</div>
 			<div class="col-xs-12 col-sm-12 col-lg-9 col-right-ac">
-				<h1 class="title-head margin-top-0">Thông tin tài khoản</h1>
-				<div class="form-signup name-account m992"> 
-					<p><strong>Họ tên:</strong> {{auth('cus')->user()->name}}</p>
-					<p> <strong>Email:</strong>{{auth('cus')->user()->email}}</p>
-					
-					
-					
+				<h1 class="title-head margin-top-0">Đổi mật khẩu</h1>
+				<div class="row">
+					<div class="col-md-6 col-12">
+						<div class="page-login">
+							<form method="post" action=""  accept-charset="UTF-8">
+								@csrf
+							
+							
+								<p>Để đảm bảo tính bảo mật bạn vui lòng đặt lại mật khẩu với ít nhất 8 kí tự</p>
+							
+							
+							<div class="form-signup clearfix row">
+								<fieldset class="form-group col-12">
+									<label for="oldPass">Mật khẩu cũ <span class="error">*</span></label>
+									<input type="password" name="OldPassword" id="OldPass" required class="form-control form-control-lg">
+								</fieldset>
+								<fieldset class="form-group col-12">
+									<label for="changePass">Mật khẩu mới <span class="error">*</span></label>
+									<input type="password" name="Password" id="changePass" required class="form-control form-control-lg">
+								</fieldset>
+								<fieldset class="form-group col-12">
+									<label for="confirmPass">Xác nhận lại mật khẩu <span class="error">*</span></label>
+									<input type="password" name="ConfirmPassword" id="confirmPass" required class="form-control form-control-lg">
+								</fieldset>
+							</div>
+							<button class="button-default" type="submit" onclick="window.location.reload()"><i class="hoverButton"></i>Đặt lại mật khẩu</button>
+							</form>
+						</div>
+					</div>
 				</div>
-
 			</div>
 		</div>
 	</div>

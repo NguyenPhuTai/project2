@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ForgotPassword;
 use App\Mail\VerifyAccount;
+use App\Models\diachi;
 use App\Models\khachhang;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Mail;
 
 class AccountControler extends Controller
@@ -64,13 +67,49 @@ class AccountControler extends Controller
         dd('no ok');
     }
     public function profile(){
-        return view('account.profile');
+        if(auth('cus')->check()){
+            return view('account.profile');
+        }
+        return redirect()->route('account.login');
     }
-    public function fogot_password(){
-        return view('account.fogot_password');
+    public function address(){
+        $id=auth('cus')->user()->id;
+        $data =diachi::all('id','name','id_khachhang','address','phone')->where('id_khachhang',$id);
+        $d = diachi::all('id');
+            return view('account.address',compact('data'));   
+    }
+    public function charge_password(){
+        return view('account.charge_password');
+    }
+    public function check_charge_password(Request $req){
+        $auth= auth('cus')->user()->password;
+        $auth2= auth('cus')->user();
+        $req-> validate([
+            'OldPassword'=> ['required',function($attr, $value, $fail){
+                global $auth;
+                if(Hash::check($value,$auth)){
+                    $fail ('Your password is not match');
+                }
+            }],
+            'Password'=>'required|min:6',
+            'ConfirmPassword'=> 'required|same:Password',
+        ]);
+        $data['password'] = bcrypt($req->Password);
+        if($auth2->update($data)){
+            return redirect()->route('home.index')->with('ok','Đổi mật khẩu thành công');
+        };
+        return redirect()->route('account.charge_password')->with('no','Đổi mật không khẩu thành công');
+
+    }
+    public function forgot_password(){
+        return view('account.forgot_password');
     }
 
-    public function check_fogot_password(){
-        
+    public function check_forgot_password(Request $req){
+        $req -> validate([
+            'email'=> 'required|exists:khachhangs'
+        ]);
+        $cus = khachhang::where('email',$req->email);
+        Mail::to($cus-> email)->send(new ForgotPassword($cus));
     }
 }
