@@ -228,7 +228,7 @@
 					<h2 class="title_pop">
 						Thêm địa chỉ mới
 					</h2>
-					<form method="post" action="{{ route('account.address') }}" accept-charset="UTF-8">
+					<form method="post" action="{{route('account.check_address')}}" accept-charset="UTF-8">
                     @csrf
 					<div class="pop_bottom">
 						<div class="form_address">

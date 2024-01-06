@@ -51,12 +51,12 @@
 
 
 		
-		<script>
+<script>
 	var Bizweb = Bizweb || {};
 	Bizweb.store = 'pocomart.mysapo.net';
 	Bizweb.id = 429689;
 	Bizweb.theme = {"id":869367,"name":"poco mart - 1810","role":"main"};
-	Bizweb.template = 'index';
+	Bizweb.template = 'page.yeu-thich';
 	if(!Bizweb.fbEventId)  Bizweb.fbEventId = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
 	var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
 				return v.toString(16);
@@ -110,6 +110,42 @@
 
 
 		
+<script type="application/ld+json">
+        {
+        "@context": "http://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": 
+        [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "item": 
+                {
+                  "@id": "https://pocomart.mysapo.net",
+                  "name": "Trang chủ"
+                }
+            },
+      
+        
+      
+      
+      
+      {
+                "@type": "ListItem",
+                "position": 2,
+                "item": 
+                {
+                  "@id": "https://pocomart.mysapo.net/yeu-thich",
+                  "name": "Yêu thích"
+                }
+            }
+      
+      
+    
+        ]
+        }
+</script>
+
 
 
 		
@@ -150,7 +186,8 @@
 			<div class="col-lg-8 col-xl-7 col-md-5 col-10 col-search order-3 order-md-2">
 				<div class="theme-search-smart">
 					<div class="header_search theme-searchs">
-						<form action="/search" class="input-group search-bar theme-header-search-form ultimate-search" role="search">
+						<form action="" class="input-group search-bar theme-header-search-form ultimate-search" method="post" role="search">
+							@csrf
 							<input type="text" aria-label="Tìm sản phẩm" name="query" value="" autocomplete="off" placeholder="Tìm kiếm sản phẩm..." class="search-auto input-group-field auto-search" required="">
 							<input type="hidden" name="type" value="product">
 							<span class="input-group-btn">
@@ -163,6 +200,7 @@
 						</form>
 					</div>
 				</div>
+				
 				<div class="contact-phone">
 					<p>
 						Tư vấn hỗ trợ
@@ -184,29 +222,101 @@
 			</div>
 			<div class="col-lg-2 col-md-3 col-6 col-account order-2 order-md-3">
 				<ul class="group-account">
-					
+					@if(auth('cus')->check())
 					<li>
 						<div class="icon">
-							<a href="/yeu-thich" class="wishlist_header" title="Sản phẩm yêu thích">
+							<a href="{{route('home.favorites')}}" class="wishlist_header" title="Sản phẩm yêu thích">
+								<svg enable-background="new 0 0 412.735 412.735" version="1.1" viewBox="0 0 412.74 412.74" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"> <path d="m295.71 35.522c-34.43-0.184-67.161 14.937-89.339 41.273-22.039-26.516-54.861-41.68-89.339-41.273-64.633 0-117.03 52.395-117.03 117.03 0 110.76 193.31 218.91 201.14 223.09 3.162 2.113 7.286 2.113 10.449 0 7.837-4.18 201.14-110.76 201.14-223.09 0-64.633-52.396-117.03-117.03-117.03zm-89.339 319.22c-30.302-17.763-185.47-112.33-185.47-202.19 0-53.091 43.039-96.131 96.131-96.131 32.512-0.427 62.938 15.972 80.457 43.363 3.557 4.905 10.418 5.998 15.323 2.44 0.937-0.68 1.761-1.503 2.44-2.44 29.055-44.435 88.631-56.903 133.07-27.848 27.202 17.787 43.575 48.114 43.521 80.615 1e-3 90.907-155.17 184.95-185.47 202.19z"></path> </svg>
+								<span class="headerWishlistCount">{{$fav}}</span>
+							</a>
+						</div>
+					</li>
+					@else
+					<li>
+						<div class="icon">
+							<a href="{{route('home.favorites')}}" class="wishlist_header" title="Sản phẩm yêu thích">
 								<svg enable-background="new 0 0 412.735 412.735" version="1.1" viewBox="0 0 412.74 412.74" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"> <path d="m295.71 35.522c-34.43-0.184-67.161 14.937-89.339 41.273-22.039-26.516-54.861-41.68-89.339-41.273-64.633 0-117.03 52.395-117.03 117.03 0 110.76 193.31 218.91 201.14 223.09 3.162 2.113 7.286 2.113 10.449 0 7.837-4.18 201.14-110.76 201.14-223.09 0-64.633-52.396-117.03-117.03-117.03zm-89.339 319.22c-30.302-17.763-185.47-112.33-185.47-202.19 0-53.091 43.039-96.131 96.131-96.131 32.512-0.427 62.938 15.972 80.457 43.363 3.557 4.905 10.418 5.998 15.323 2.44 0.937-0.68 1.761-1.503 2.44-2.44 29.055-44.435 88.631-56.903 133.07-27.848 27.202 17.787 43.575 48.114 43.521 80.615 1e-3 90.907-155.17 184.95-185.47 202.19z"></path> </svg>
 								<span class="headerWishlistCount">0</span>
 							</a>
 						</div>
 					</li>
-					
+					@endif
+					@if(auth('cus')->check())
 					<li class="cart-drop">
 						<div class="icon">
-							<a class="img_hover_cart" href="/cart" title="Giỏ hàng">
+							<a class="img_hover_cart" href="{{ route('cart.index') }}" title="Giỏ hàng">
 								<svg enable-background="new 0 0 407.453 407.453" version="1.1" viewBox="0 0 407.45 407.45" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"> <g fill="#010002"> <path d="m255.1 116.52c4.487 0 8.129-3.633 8.129-8.129 0-4.495-3.642-8.129-8.129-8.129h-111.61c-4.487 0-8.129 3.633-8.129 8.129 0 4.495 3.642 8.129 8.129 8.129h111.61z"></path> <path d="m367.06 100.26h-55.372c-4.487 0-8.129 3.633-8.129 8.129 0 4.495 3.642 8.129 8.129 8.129h47.243v274.68h-310.41v-274.68h44.536c4.487 0 8.129-3.633 8.129-8.129 0-4.495-3.642-8.129-8.129-8.129h-52.664c-4.487 0-8.129 3.633-8.129 8.129v290.94c0 4.495 3.642 8.129 8.129 8.129h326.67c4.487 0 8.129-3.633 8.129-8.129v-290.94c0-4.495-3.634-8.128-8.129-8.128z"></path> <path d="m282.59 134.8c4.487 0 8.129-3.633 8.129-8.129v-59.273c-1e-3 -37.156-40.115-67.394-89.618-67.394-49.308 0-89.414 30.238-89.414 67.394v59.274c0 4.495 3.642 8.129 8.129 8.129s8.129-3.633 8.129-8.129v-59.274c0-28.198 32.823-51.137 73.36-51.137 40.334 0 73.157 22.939 73.157 51.137v59.274c-1e-3 4.495 3.633 8.128 8.128 8.128z"></path> <path d="m98.892 147.57c0 11.526 9.389 20.907 20.923 20.907s20.923-9.38 20.923-20.907c0-4.495-3.642-8.129-8.129-8.129s-8.129 3.633-8.129 8.129c0 2.561-2.089 4.65-4.666 4.65-2.569 0-4.666-2.089-4.666-4.65 0-4.495-3.642-8.129-8.129-8.129s-8.127 3.634-8.127 8.129z"></path> <path d="m282.59 168.47c11.534 0 20.923-9.38 20.923-20.907 0-4.495-3.642-8.129-8.129-8.129s-8.129 3.633-8.129 8.129c0 2.561-2.089 4.65-4.666 4.65s-4.666-2.089-4.666-4.65c0-4.495-3.642-8.129-8.129-8.129s-8.129 3.633-8.129 8.129c2e-3 11.526 9.39 20.907 20.925 20.907z"></path> </g> </svg>
-								<span class="count_item count_item_pr"></span>
+								
+								<span class="count_item count_item_pr">{{$total_pro}}</span>
 							</a>
 						</div>
 						<div class="top-cart-content">					
 							<div class="CartHeaderContainer">
+							<form action="/cart" method="post" novalidate="" class="cart ajaxcart cartheader">
+								<div class="ajaxcart__inner ajaxcart__inner--has-fixed-footer cart_body items">
+									@foreach($cart as $d)
+									<div class="ajaxcart__row">
+										<div class="ajaxcart__product cart_product" data-line="2">
+											<a href="{{route('home.product',$d->id_products)}}" class="ajaxcart__product-image cart_image" title="{{$d->pro->name}}">
+												<img width="80" height="80" src="/uploads/product/{{$d->pro->image}}" alt="{{$d->pro->name}}"></a>
+											<div class="grid__item cart_info">
+												<div class="ajaxcart__product-name-wrapper cart_name">
+													<a href="/kappa-giay-the-thao-nam-nu-311685w-a0f" class="ajaxcart__product-name h4" title="{{$d->pro->name}}">{{$d->pro->name}}</a>
+													
+												</div>
+												<div class="grid">
+													<div class="grid__item one-half cart_select cart_item_name">
+													<label class="cart_quantity">Số lượng</label>
+														<div class="ajaxcart__qty input-group-btn">
+															<button type="button" class="ajaxcart__qty-adjust ajaxcart__qty--minus items-count" data-id="" data-qty="0" data-line="2" aria-label="-">
+															-
+															</button>
+															<input type="text" name="updates[]" class="ajaxcart__qty-num number-sidebar" maxlength="3" value="{{$d->quantity}}" min="0" data-id="" data-line="2" aria-label="quantity" pattern="[0-9]*">
+															<button type="button" class="ajaxcart__qty-adjust ajaxcart__qty--plus items-count" data-id="" data-line="2" data-qty="2" aria-label="+">
+															+							
+															</button>
+														</div>
+													</div>
+													<div class="grid__item one-half text-right cart_prices">
+														<span class="cart-price">{{number_format($d->price)}}đ</span>
+														<a class="cart__btn-remove remove-item-cart ajaxifyCart--remove" href="javascript:;" data-line="2">Xóa</a>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									@endforeach
+								</div>
+								<div class="ajaxcart__footer ajaxcart__footer--fixed cart-footer">
+									<div class="ajaxcart__subtotal">
+										<div class="cart__subtotal">
+											<div class="cart__col-6">Tổng tiền:</div>
+											<div class="text-right cart__totle"><span class="total-price">{{number_format($total_price)}}₫</span></div>
+										</div>
+									</div>
+									<div class="cart__btn-proceed-checkout-dt">
+										<button onclick="location.href='/checkout'" type="button" class="button btn btn-default cart__btn-proceed-checkout" id="btn-proceed-checkout" title="Thanh toán">Thanh toán</button>
+									</div>
+								</div>
+							</form>
 							</div>
 						</div>
+							
 					</li>
-					
+					@else
+					<li class="cart-drop">
+						<div class="icon">
+							<a class="img_hover_cart" href="{{ route('cart.index') }}" title="Giỏ hàng">
+								<svg enable-background="new 0 0 407.453 407.453" version="1.1" viewBox="0 0 407.45 407.45" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"> <g fill="#010002"> <path d="m255.1 116.52c4.487 0 8.129-3.633 8.129-8.129 0-4.495-3.642-8.129-8.129-8.129h-111.61c-4.487 0-8.129 3.633-8.129 8.129 0 4.495 3.642 8.129 8.129 8.129h111.61z"></path> <path d="m367.06 100.26h-55.372c-4.487 0-8.129 3.633-8.129 8.129 0 4.495 3.642 8.129 8.129 8.129h47.243v274.68h-310.41v-274.68h44.536c4.487 0 8.129-3.633 8.129-8.129 0-4.495-3.642-8.129-8.129-8.129h-52.664c-4.487 0-8.129 3.633-8.129 8.129v290.94c0 4.495 3.642 8.129 8.129 8.129h326.67c4.487 0 8.129-3.633 8.129-8.129v-290.94c0-4.495-3.634-8.128-8.129-8.128z"></path> <path d="m282.59 134.8c4.487 0 8.129-3.633 8.129-8.129v-59.273c-1e-3 -37.156-40.115-67.394-89.618-67.394-49.308 0-89.414 30.238-89.414 67.394v59.274c0 4.495 3.642 8.129 8.129 8.129s8.129-3.633 8.129-8.129v-59.274c0-28.198 32.823-51.137 73.36-51.137 40.334 0 73.157 22.939 73.157 51.137v59.274c-1e-3 4.495 3.633 8.128 8.128 8.128z"></path> <path d="m98.892 147.57c0 11.526 9.389 20.907 20.923 20.907s20.923-9.38 20.923-20.907c0-4.495-3.642-8.129-8.129-8.129s-8.129 3.633-8.129 8.129c0 2.561-2.089 4.65-4.666 4.65-2.569 0-4.666-2.089-4.666-4.65 0-4.495-3.642-8.129-8.129-8.129s-8.127 3.634-8.127 8.129z"></path> <path d="m282.59 168.47c11.534 0 20.923-9.38 20.923-20.907 0-4.495-3.642-8.129-8.129-8.129s-8.129 3.633-8.129 8.129c0 2.561-2.089 4.65-4.666 4.65s-4.666-2.089-4.666-4.65c0-4.495-3.642-8.129-8.129-8.129s-8.129 3.633-8.129 8.129c2e-3 11.526 9.39 20.907 20.925 20.907z"></path> </g> </svg>
+								
+								<span class="count_item count_item_pr">0</span>
+							</a>
+						</div>
+						
+							
+					</li>
+					@endif
+
 					<li>
 						<div class="icon">
 							<a href="/so-sanh-san-pham" class="wishlist_header" title="So sánh sản phẩm">
@@ -240,13 +350,11 @@
 				
 				
 				
-				
-				 
-
+				@foreach($cats as $d)
 				
 				<li class="nav_item lev-1 lv1 li_check">
-					<a class="lazyload" data-src="//bizweb.dktcdn.net/thumb/icon/100/429/689/collections/icon1.png?v=1623548877697" href="/dien-thoai-may-tinh-bang" title="Điện thoại - Máy tính bảng">
-						Điện thoại - Máy tính bảng
+					<a class="lazyload" data-src="//bizweb.dktcdn.net/thumb/icon/100/429/689/collections/icon1.png?v=1623548877697" href="{{route('home.category',$d->id)}}" title="{{$d-> name}}">
+						{{$d -> name}}
 						<i class="fa fa-angle-right"></i>
 					</a>
 					<i class="fa fa-angle-down"></i>
@@ -327,253 +435,8 @@
 						
 					</ul>
 				</li>
-				
-				
-				
-				
-				
-				 
-
-				
-				<li class="nav_item lev-1 lv1 li_check">
-					<a class="lazyload" data-src="//bizweb.dktcdn.net/thumb/icon/100/429/689/collections/icon2.png?v=1623549042517" href="/phu-kien-thiet-bi-so" title="Phụ kiện - Thiết bị số">Phụ kiện - Thiết bị số
-					</a>
-				</li>
-				
-				
-				
-				
-				
-				 
-
-				
-				<li class="nav_item lev-1 lv1 li_check">
-					<a class="lazyload" data-src="//bizweb.dktcdn.net/thumb/icon/100/429/689/collections/icon3.png?v=1623549208523" href="/may-anh-quay-phim" title="Máy ảnh - Quay phim">Máy ảnh - Quay phim
-					</a>
-				</li>
-				
-				
-				
-				
-				
-				 
-
-				
-				<li class="nav_item lev-1 lv1 li_check">
-					<a class="lazyload" data-src="//bizweb.dktcdn.net/thumb/icon/100/429/689/collections/icon4s.png?v=1623549444870" href="/dien-gia-dung-nha-bep" title="Điện gia dụng - Nhà bếp">Điện gia dụng - Nhà bếp
-					</a>
-				</li>
-				
-				
-				
-				
-				
-				 
-
-				
-				<li class="nav_item lev-1 lv1 li_check">
-					<a class="lazyload" data-src="//bizweb.dktcdn.net/thumb/icon/100/429/689/collections/icon5.png?v=1623549644967" href="/laptop-thiet-bi-it" title="Laptop - Thiết bị IT">Laptop - Thiết bị IT
-					</a>
-				</li>
-				
-				
-				
-				
-				
-				 
-
-				
-				<li class="nav_item lev-1 lv1 li_check">
-					<a class="lazyload" data-src="//bizweb.dktcdn.net/thumb/icon/100/429/689/collections/icon6.png?v=1623549755877" href="/may-choi-game-tro-choi" title="Máy chơi game - Trò chơi">Máy chơi game - Trò chơi
-					</a>
-				</li>
-				
-				
-				
-				
-				
-				 
-
-				
-				<li class="nav_item lev-1 lv1 li_check">
-					<a class="lazyload" data-src="//bizweb.dktcdn.net/thumb/icon/100/429/689/collections/icon7.png?v=1623549900997" href="/trang-suc-sanh-dieu" title="Trang sức - Sành điệu">Trang sức - Sành điệu
-					</a>
-				</li>
-				
-				
-				
-				
-				
-				 
-
-				
-				<li class="nav_item lev-1 lv1 li_check">
-					<a class="lazyload" data-src="//bizweb.dktcdn.net/thumb/icon/100/429/689/collections/icon8.png?v=1623550072027" href="/thoi-trang-lam-dep" title="Thời trang - Làm đẹp">
-						Thời trang - Làm đẹp
-						<i class="fa fa-angle-right"></i>
-					</a>
-					<i class="fa fa-angle-down"></i>
-					<ul class="ul_content_right_1 row">
-						
-						<li class="nav_item has-subnav lv2 col-lg-3 col-md-12">
-							<h4 class="text-normal">
-								
-								<a href="javascript:;" title="Ưu đãi khai trương" data-src="//bizweb.dktcdn.net/100/429/689/themes/869367/assets/new.png?1697597694844" class="lazyload hot">Ưu đãi khai trương</a>
-							</h4>
-							<ul class="ul_content_right_2">
-								
-								
-								<li class="nav_item lv3">
-									<a href="/san-pham-khuyen-mai" title="sản phẩm khuyến mãi">sản phẩm khuyến mãi</a>
-								</li>
-								
-							</ul>
-						</li>
-						
-						
-						
-						<li class="nav_item lv2 col-lg-3 col-md-12">
-							<h4>
-								<a href="/thoi-trang-nu" title="Thời trang nữ">Thời trang nữ</a>
-							</h4>
-							<ul class="ul_content_right_2">
-								
-								<li class="nav_item lv3"><a href="/collections/all" title="Áo Croptop Nữ">Áo Croptop Nữ</a></li>
-								
-								<li class="nav_item lv3"><a href="/collections/all" title="Đầm Dáng Xòe">Đầm Dáng Xòe</a></li>
-								
-								<li class="nav_item lv3"><a href="/collections/all" title="Áo Khoác Cardigan Nữ">Áo Khoác Cardigan Nữ</a></li>
-								
-								<li class="nav_item lv3"><a href="/collections/all" title="Quần Ống Rộng Nữ">Quần Ống Rộng Nữ</a></li>
-								
-							</ul>
-						</li>
-						
-						
-						
-						<li class="nav_item lv2 col-lg-3 col-md-12">
-							<h4>
-								<a href="/thoi-trang-nam" title="Thời trang nam">Thời trang nam</a>
-							</h4>
-							<ul class="ul_content_right_2">
-								
-								<li class="nav_item lv3"><a href="/collections/all" title="Sơ Mi Ngắn Tay">Sơ Mi Ngắn Tay</a></li>
-								
-								<li class="nav_item lv3"><a href="/collections/all" title="Áo Hoodies Nam">Áo Hoodies Nam</a></li>
-								
-								<li class="nav_item lv3"><a href="/collections/all" title="Áo Thun Ngắn Tay">Áo Thun Ngắn Tay</a></li>
-								
-								<li class="nav_item lv3"><a href="/collections/all" title="Áo thun dài tay">Áo thun dài tay</a></li>
-								
-							</ul>
-						</li>
-						
-						
-						
-						<li class="nav_item lv2 col-lg-3 col-md-12">
-							<h4>
-								<a href="/dong-ho-trang-suc" title="Đồng hồ & Trang sức">Đồng hồ & Trang sức</a>
-							</h4>
-							<ul class="ul_content_right_2">
-								
-								<li class="nav_item lv3"><a href="/collections/all" title="Đồng hồ cho nam">Đồng hồ cho nam</a></li>
-								
-								<li class="nav_item lv3"><a href="/collections/all" title="Đồng hồ cho nữ">Đồng hồ cho nữ</a></li>
-								
-								<li class="nav_item lv3"><a href="/collections/all" title="Đồng hồ đôi">Đồng hồ đôi</a></li>
-								
-								<li class="nav_item lv3"><a href="/collections/all" title="Nhẫn đôi">Nhẫn đôi</a></li>
-								
-							</ul>
-						</li>
-						
-						
-						
-						<li class="nav_item lv2 col-lg-3 col-md-12">
-							<h4>
-								<a href="/giay-dep-nu" title="Giày dép nữ">Giày dép nữ</a>
-							</h4>
-							<ul class="ul_content_right_2">
-								
-								<li class="nav_item lv3"><a href="/collections/all" title="Guốc cao gót">Guốc cao gót</a></li>
-								
-								<li class="nav_item lv3"><a href="/collections/all" title="Giày đế bệt">Giày đế bệt</a></li>
-								
-								<li class="nav_item lv3"><a href="/collections/all" title="Giày bupbe">Giày bupbe</a></li>
-								
-								<li class="nav_item lv3"><a href="/collections/all" title="Giày cổ cao nữ">Giày cổ cao nữ</a></li>
-								
-							</ul>
-						</li>
-						
-						
-						
-						<li class="nav_item lv2 col-lg-3 col-md-12">
-							<h4>
-								<a href="/giay-dep-nam" title="Giày dép nam">Giày dép nam</a>
-							</h4>
-							<ul class="ul_content_right_2">
-								
-								<li class="nav_item lv3"><a href="/collections/all" title="Giày tăng chiều cao">Giày tăng chiều cao</a></li>
-								
-								<li class="nav_item lv3"><a href="/collections/all" title="Giày lười">Giày lười</a></li>
-								
-								<li class="nav_item lv3"><a href="/collections/all" title="Giày thể thao">Giày thể thao</a></li>
-								
-								<li class="nav_item lv3"><a href="/collections/all" title="Giày da">Giày da</a></li>
-								
-							</ul>
-						</li>
-						
-						
-						
-						<li class="nav_item lv2 col-lg-3 col-md-12">
-							<h4>
-								<a href="/phu-kien-thoi-trang" title="Phụ kiện thời trang">Phụ kiện thời trang</a>
-							</h4>
-							<ul class="ul_content_right_2">
-								
-								<li class="nav_item lv3"><a href="/collections/all" title="Vòng cổ bạc">Vòng cổ bạc</a></li>
-								
-								<li class="nav_item lv3"><a href="/collections/all" title="Lắc tay bạc">Lắc tay bạc</a></li>
-								
-								<li class="nav_item lv3"><a href="/collections/all" title="Khuyên tai">Khuyên tai</a></li>
-								
-								<li class="nav_item lv3"><a href="/collections/all" title="Nơ buộc tóc">Nơ buộc tóc</a></li>
-								
-							</ul>
-						</li>
-						
-						
-					</ul>
-				</li>
-				
-				
-				
-				
-				
-				 
-
-				
-				<li class="nav_item lev-1 lv1 li_check">
-					<a class="lazyload" data-src="//bizweb.dktcdn.net/thumb/icon/100/429/689/collections/icon9s.png?v=1623550441417" href="/nha-cua-doi-song" title="Nhà cửa đời sống">Nhà cửa đời sống
-					</a>
-				</li>
-				
-				
-				
-				
-				
-				 
-
-				
-				<li class="nav_item lev-1 lv1 li_check">
-					<a class="lazyload" data-src="//bizweb.dktcdn.net/thumb/icon/100/429/689/collections/icon10.png?v=1623550646920" href="/sach-tieu-thuyet" title="Sách - Tiểu thuyết">Sách - Tiểu thuyết
-					</a>
-				</li>
-				
-				
-				
+				@endforeach
+			
 				<li class="lev-1 xemthem hidden-lgg nav_item clearfix ">
 					<a class="lazyload" data-src="//bizweb.dktcdn.net/100/429/689/themes/869367/assets/plus.svg?1697597694844" href="javascript:;" >
 						Xem thêm			
@@ -616,10 +479,10 @@
 					</a>
 					<i class="fa fa-caret-down"></i>
 					<ul class="item_small">
-						
+						@foreach($cats as $d)
 						<li>
 							<a class="caret-down" href="/dien-thoai-may-tinh-bang" title="Điện thoại - Máy tính bảng">
-								Điện thoại - Máy tính bảng 
+								{{$d -> name}}
 							</a>
 							
 							<i class="fa fa-caret-down"></i>
@@ -642,108 +505,8 @@
 							</ul>
 							
 						</li>
+						@endforeach
 						
-						<li>
-							<a class="" href="/phu-kien-thiet-bi-so" title="Phụ kiện - Thiết bị số">
-								Phụ kiện - Thiết bị số 
-							</a>
-							
-							
-						</li>
-						
-						<li>
-							<a class="" href="/may-anh-quay-phim" title="Máy ảnh - Quay phim">
-								Máy ảnh - Quay phim 
-							</a>
-							
-							
-						</li>
-						
-						<li>
-							<a class="" href="/dien-gia-dung-nha-bep" title="Điện gia dụng - Nhà bếp">
-								Điện gia dụng - Nhà bếp 
-							</a>
-							
-							
-						</li>
-						
-						<li>
-							<a class="" href="/laptop-thiet-bi-it" title="Laptop - Thiết bị IT">
-								Laptop - Thiết bị IT 
-							</a>
-							
-							
-						</li>
-						
-						<li>
-							<a class="" href="/may-choi-game-tro-choi" title="Máy chơi game - Trò chơi">
-								Máy chơi game - Trò chơi 
-							</a>
-							
-							
-						</li>
-						
-						<li>
-							<a class="" href="/trang-suc-sanh-dieu" title="Trang sức - Sành điệu">
-								Trang sức - Sành điệu 
-							</a>
-							
-							
-						</li>
-						
-						<li>
-							<a class="caret-down" href="/thoi-trang-lam-dep" title="Thời trang - Làm đẹp">
-								Thời trang - Làm đẹp 
-							</a>
-							
-							<i class="fa fa-caret-down"></i>
-							
-							
-							<ul>
-								
-								<li>
-									<a href="/thoi-trang-nu" title="Thời trang nữ" class="a3">Thời trang nữ</a>
-								</li>
-								
-								<li>
-									<a href="/thoi-trang-nam" title="Thời trang nam" class="a3">Thời trang nam</a>
-								</li>
-								
-								<li>
-									<a href="/dong-ho-trang-suc" title="Đồng hồ & Trang sức" class="a3">Đồng hồ & Trang sức</a>
-								</li>
-								
-								<li>
-									<a href="/giay-dep-nu" title="Giày dép nữ" class="a3">Giày dép nữ</a>
-								</li>
-								
-								<li>
-									<a href="/giay-dep-nam" title="Giày dép nam" class="a3">Giày dép nam</a>
-								</li>
-								
-								<li>
-									<a href="/phu-kien-thoi-trang" title="Phụ kiện thời trang" class="a3">Phụ kiện thời trang</a>
-								</li>
-								
-							</ul>
-							
-						</li>
-						
-						<li>
-							<a class="" href="/nha-cua-doi-song" title="Nhà cửa đời sống">
-								Nhà cửa đời sống 
-							</a>
-							
-							
-						</li>
-						
-						<li>
-							<a class="" href="/sach-tieu-thuyet" title="Sách - Tiểu thuyết">
-								Sách - Tiểu thuyết 
-							</a>
-							
-							
-						</li>
 						
 					</ul>
 				</li>
@@ -865,5 +628,169 @@
 	})
 	</script>
 @endif
+
+<script>
+
+	$(document).ready(function(){
+
+		var preLoadLoadGif = $('<div class="spinner-border text-primary" role="status"><span class="sr-only">Loading...</span></div>');
+		var searchID = -1;
+		var currReqObj = null;
+
+		var $resultsBox = $('<div class="results-box"><div class="search-results"></div><div class="history"></div></div>').appendTo('.theme-search, .theme-searchs');
+
+		$('.theme-search-smart .theme-header-search-form input[type="text"]').bind('keyup change', function(e){
+			//$('.results-box .search-results').html('');
+			if($(this).val().length > 0 && $(this).val() != $(this).data('oldval')) {
+				$(this).data('oldval', $(this).val());
+				if(currReqObj != null) currReqObj.abort();
+				clearTimeout(searchID);
+				var $form = $(this).closest('form');
+				var term = $form.find('input[name="query"]').val();
+				var linkURL = $form.attr('action') + '?query=' + term;
+				$resultsBox.find('.search-results').html('<div class="theme-loading"><div class="spinner-border text-primary" role="status"><span class="sr-only">Loading...</span></div></div>');
+
+				searchID = setTimeout(function(){
+					currReqObj = $.ajax({
+						url: $form.attr('action'),
+						async: false,
+						data: {
+							type: 'product',
+							view: 'json',
+							q: term
+						},
+						dataType: 'json',
+						success: function(data){
+							currReqObj = null;
+
+							if(data.results_total == 0) {
+								$resultsBox.find('.search-results').html('<div class="note">Không có kết quả tìm kiếm</div>');
+							} else {
+								$resultsBox.find('.search-results').empty();
+								$.each(data.results, function(index, item){
+									var xshow = 'wholesale';
+									if(!(item.title.toLowerCase().indexOf(xshow) > -1)) {
+										var $row = $('<a class="clearfix"></a>').attr('href', item.url).attr('title', item.title);
+										$row.append('<div class="img"><img src="' + item.thumb + '" /></div>');
+										$row.append('<div class="d-title">'+item.title+'</div>');
+										$row.append('<div class="d-title d-price">'+item.price+'</div>');
+										$resultsBox.find('.search-results').append($row);
+									}
+								});
+								var countll = $('.search-results a').length;
+								if(countll < 8) {
+									$resultsBox.find('.search-results').append('<a href="' + linkURL + '" class="note" title="Xem tất cả">Xem tất cả <span class="allcount"></span></a>');
+									$('.allcount').html("("+countll+")");
+								}else {
+									$resultsBox.find('.search-results').append('<a href="' + linkURL + '" class="note" title="Xem nhiều hơn">Xem nhiều hơn</a>');
+								}
+								
+							}
+						}
+					});
+				}, 500);
+			}  else if ($(this).val().length <= 1) {
+				//$resultsBox.find('.search-results').empty();
+			}
+		}).attr('autocomplete', 'off').data('oldval', '').bind('focusin', function(){
+			$resultsBox.fadeIn(200);
+		}).bind('click', function(e){
+			e.stopPropagation();
+		});
+		$('body').bind('click', function(){
+			$resultsBox.hide();
+		});
+		$('.theme-search-form').on('submit', function(e){
+			e.preventDefault();
+			var term = '*' + $(this).find('input[name="query"]').val() + '*';
+			var linkURL = $(this).attr('action') + '?query=' + term ;
+			window.location = linkURL;
+
+		});
+
+	});
+
+
+
+</script>
+		
+		
+
+
+
+
+
+
+
+
+
+
+
+
+					<script>
+						$('#mc-form').ajaxChimp({
+							language: 'en',
+							callback: mailChimpResponse,
+							url: '//gmail.us2.list-manage.com/subscribe/post?u=ef7f65e3be67e30ff1c4bd591&id=a7430e9bc5'
+						});
+						function mailChimpResponse(resp) {
+							if (resp.result === 'success') {
+								if(resp.msg == 'Thank you for subscribing!'){
+									$('.mailchimp-success').html('Cảm ơn bạn đã đăng ký!').fadeIn(900);
+								}else{
+									$('.mailchimp-success').html('' + resp.msg).fadeIn(900);
+								}
+								$('.mailchimp-error').fadeOut(100);
+							} else if (resp.result === 'error') {
+								if(resp.msg == '0 - Please enter a value'){
+									$('.mailchimp-error').html('Vui lòng nhập email').fadeIn(900);
+								}else if(resp.msg == '0 - An email address must contain a single @'){
+									$('.mailchimp-error').html('Địa chỉ email phải chứa ký tự @').fadeIn(900);
+								}else if(resp.msg == 'This email cannot be added to this list. Please enter a different email address.'){
+									$('.mailchimp-error').html('Email này không thể được thêm vào danh sách này. Vui lòng nhập một địa chỉ email khác.').fadeIn(900);
+								}else if(resp.msg.includes('0 - The domain portion of the email address is invalid')){
+									$('.mailchimp-error').html('Phần tên miền của địa chỉ email không hợp lệ').fadeIn(900);
+								}else if(resp.msg.includes('0 - The username portion of the email address is empty')){
+									$('.mailchimp-error').html('Phần tên người dùng của địa chỉ email trống').fadeIn(900);
+								}else if(resp.msg == 'Thank you for subscribing!'){
+									$('.mailchimp-error').html('Cảm ơn bạn đã đăng ký!').fadeIn(900);
+									$('.mailchimp-error').fadeOut(4000);
+								}else{
+									$('.mailchimp-error').html('' + resp.msg).fadeIn(900);
+								}
+								$('.mailchimp-error').fadeOut(4000);
+							}
+						}
+					</script>
+				
+<link rel="preload" href="//bizweb.dktcdn.net/100/429/689/themes/869367/assets/wishlist-compare.js?1697597694844" as="script">
+<script src="//bizweb.dktcdn.net/100/429/689/themes/869367/assets/wishlist-compare.js?1697597694844" type="text/javascript"></script>
+		
+<link rel="preload" href="//bizweb.dktcdn.net/100/429/689/themes/869367/assets/main.js?1697597694844" as="script">
+<script src="//bizweb.dktcdn.net/100/429/689/themes/869367/assets/main.js?1697597694844" type="text/javascript"></script>
+
+
+
+
+
+
+		<link rel="preload" as="style" href="//bizweb.dktcdn.net/100/429/689/themes/869367/assets/ajaxcart.scss.css?1697597694844"  type="text/css">
+<link rel="preload" as="script" href="//bizweb.dktcdn.net/100/429/689/themes/869367/assets/api_bizweb.js?1697597694844"  type="text/javascript">
+<link href="//bizweb.dktcdn.net/100/429/689/themes/869367/assets/ajaxcart.scss.css?1697597694844" rel="stylesheet" type="text/css" media="all" />
+<script src="//bizweb.dktcdn.net/100/429/689/themes/869367/assets/api_bizweb.js?1697597694844" type="text/javascript"></script>
+
+		<div style="visibility:hidden; position: absolute; z-index: -1; bottom: 0; left: 0;">
+	<svg xmlns="http://www.w3.org/2000/svg">
+		<symbol id="nexticon">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path d="M96 480c-8.188 0-16.38-3.125-22.62-9.375c-12.5-12.5-12.5-32.75 0-45.25L242.8 256L73.38 86.63c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0l192 192c12.5 12.5 12.5 32.75 0 45.25l-192 192C112.4 476.9 104.2 480 96 480z"/></svg>
+		</symbol>
+		<symbol id="previcon">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path d="M224 480c-8.188 0-16.38-3.125-22.62-9.375l-192-192c-12.5-12.5-12.5-32.75 0-45.25l192-192c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25L77.25 256l169.4 169.4c12.5 12.5 12.5 32.75 0 45.25C240.4 476.9 232.2 480 224 480z"/></svg>
+		</symbol>
+	</svg>
+</div>
+
+	</body>
+</html>
 
 @yield('main')

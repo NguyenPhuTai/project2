@@ -16,6 +16,11 @@ class AccountControler extends Controller
     public function login(){
         return view('account.login');
     }
+    public function verify($email){
+        $acc = khachhang::where('email',$email)->whereNULL('email_verified_at')->firstOrFail();
+        khachhang::where('email',$email)->update(['email_verified_at'=> date('Y-m-d')]);
+        return redirect()->route('account.login')->with('ok','Xác nhận mail thành công!');
+    }
     public function logout(){
         auth('cus')->logout();
         return redirect()->route('home.index')->with('ok','Đăng xuất thành công');
