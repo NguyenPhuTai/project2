@@ -25,6 +25,10 @@ class khachhang extends Authenticatable
         'password',
         'phone',
     ];
+    public function carts(){
+        return $this->hasMany(cart::class,'id_khachhangs','id');
+    }
+    
 
     /**
      * The attributes that should be hidden for serialization.
