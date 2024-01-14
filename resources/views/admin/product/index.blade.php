@@ -40,7 +40,7 @@
             </td>
             <td>{{$model->cat->name}}</td>
             <td>{{$model->price}} <span class="label label-success">{{$model->sale_price}}</span></td>
-            <td>{{$model->status ==0 ? 'Het hang':'Con hang'}}</td>
+            <td>{{$model->status ==0 ? 'Hết hàng':'Còn hàng'}}</td>
             <td class="text-right">
                 <form action="{{route('product.destroy',$model->id)}}" method="post" onsubmit="return confirm('Chac chan xoa?')">
                     @csrf @method('DELETE')
