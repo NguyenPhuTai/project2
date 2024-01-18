@@ -62,6 +62,7 @@ Route::post('/admin/login', [AdminController::class, 'check_login']);
 Route::get('/logout', [AdminController::class, 'logout'])->name('admin.logout');
 Route::get('/order', [OrderController::class, 'index'])->name('order.index');
 Route::get('/order/edit/{id}', [OrderController::class, 'edit'])->name('order.edit');
+Route::get('/order/detail/{id}', [OrderController::class, 'detail'])->name('order.detail');
 Route::put('/order/edit/{id}', [OrderController::class, 'update'])->name('order.update');
 Route::resource('category', CategoryController::class);
 Route::resource('product', ProductController::class);

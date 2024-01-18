@@ -36,7 +36,7 @@
             <td>{{$model->status ==0 ? 'Chưa xác nhận':'Đã xác nhận'}} &nbsp;&nbsp;&nbsp;&nbsp;
                 <a href="{{route('order.edit',$model->id)}}" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i>Sửa</a>
             </td>
-            <td><a href="">Xem chi tiết Đơn hàng</a></td>
+            <td><a href="{{route('order.detail',$model->id)}}">Xem chi tiết Đơn hàng</a></td>
         </tr>
         @endforeach
     </tbody>

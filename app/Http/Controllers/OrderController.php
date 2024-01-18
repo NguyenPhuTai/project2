@@ -36,4 +36,19 @@ class OrderController extends Controller
         $order->save();
         return redirect()->route('order.index')->with('success', 'Status updated successfully.');
     }
+
+    public function detail(Order $order,Request $request){
+        $data = DB::table('orders')
+        ->join('order_details', 'orders.id', '=', 'order_details.id_order')
+        ->join('khachhangs', 'order_details.id_khachhangs', '=', 'khachhangs.id')
+        ->join('products', 'order_details.id_products', '=', 'products.id')
+        ->join('diachis', 'orders.id_address', '=', 'diachis.id')
+        ->select('orders.*', 'order_details.*', 'khachhangs.name as khachhang_name','diachis.name as diachi_name','diachis.phone as diachi_phone','diachis.address as diachi_address','products.name as product_name')
+        ->where('orders.id', '=', $request->id)
+        ->get();
+        $dataArray = $data->toArray();
+        //dd($dataArray);
+        return view('admin.order.detail', compact('order','dataArray'));
+
+    }
 }
