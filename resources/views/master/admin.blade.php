@@ -91,8 +91,8 @@ use Illuminate\Support\Facades\Auth;
               <i class="fa fa-shopping-cart"></i> <span>Đơn hàng</span> <i class="fa fa-angle-left pull-right"></i>
             </a>
             <ul class="treeview-menu">
-              <li><a href="ad_assets/index.html"><i class="fa fa-circle-o"></i> Danh sách Đơn hàng</a></li>
-              <li><a href="ad_assets/index2.html"><i class="fa fa-circle-o"></i> Thống kê báo cáo Đơn hàng</a></li>
+              <li><a href="{{route('order.index')}}"><i class="fa fa-circle-o"></i> Danh sách Đơn hàng</a></li>
+              <li><a href="#"><i class="fa fa-circle-o"></i> Thống kê báo cáo Đơn hàng</a></li>
             </ul>
           </li>
 
