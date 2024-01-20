@@ -203,13 +203,13 @@
 							<a class="title-info" href="{{ route('account.profile') }}">Thông tin tài khoản</a>
 						</li>
 						<li>
-							<a class="title-info" href="/account/orders">Đơn hàng của bạn</a>
+							<a class="title-info" href="{{ route('order.history') }}">Đơn hàng của bạn</a>
 						</li>
 						<li>
 							<a class="title-info" href="{{ route('account.charge_password') }}">Đổi mật khẩu</a>
 						</li>
 						<li>
-							<a disabled="disabled" class="title-info active" href="{{ route('account.address') }}">Sổ địa chỉ (0)</a>
+							<a disabled="disabled" class="title-info active" href="{{ route('account.address') }}">Sổ địa chỉ</a>
 						</li>
 						<li>
 							<a class="title-info" href="{{ route('account.logout') }}">Đăng xuất</a>

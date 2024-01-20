@@ -61,4 +61,15 @@ class OrdersController extends Controller
         orders::where('id',$id)->update(['status'=> 1]);
         return redirect()->route('home.index')->with('ok','Xác nhận mail thành công!');
     }
+    public function history(){
+        $or = orders::where('id_khachhangs',auth('cus')->user()->id)->get();
+        // dd($or);
+        return view("order_history",compact('or'));
+    }
+    public function history_detail($order){
+        $or = orders::where('id',$order)->get();
+        $detail = order_detail::where('id_order',$order)->get();
+        // dd($detail);
+        return view("order_history_detail",compact('or','detail'));
+    }
 }

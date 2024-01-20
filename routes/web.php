@@ -26,8 +26,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['prefix'=>''], function () {
     route::get('/',[HomeController::class,'index'])->name('home.index');
-    route::get('/category/{cat}',[HomeController::class,'category'])->name('home.category');
-    route::get('/product/{pro}',[HomeController::class,'product'])->name('home.product');
+    route::get('/cat/{cat}',[HomeController::class,'category'])->name('home.category');
+    route::get('/pro/{pro}',[HomeController::class,'product'])->name('home.product');
 });
 
 Route::group(['prefix'=>'account'], function () {
@@ -75,7 +75,8 @@ Route::group(['prefix'=>'order', 'middleware'=> 'customer'], function () {
     Route::get('/',[OrdersController::class, 'index'])->name('order.index');
     Route::get('/order-success/{order}',[OrdersController::class, 'success'])->name('order.success');
     Route::post('/create-order',[OrdersController::class, 'add'])->name('order.add');
-    
+    Route::get('/order-history',[OrdersController::class, 'history'])->name('order.history');
+    Route::get('/order-history-detail/{order}',[OrdersController::class, 'history_detail'])->name('order.history_detail');
 });
 
 Route::get('/admin/login',[AdminController::class,'login'])->name('admin.login');
