@@ -19,4 +19,7 @@ class orders extends Model
     public function order(){
         return $this->hasOne(khachhang::class,'id','id_khachhangs');
     }
+    public function address(){
+        return $this->hasOne(diachi::class,'id','id_address');
+    }
 }
